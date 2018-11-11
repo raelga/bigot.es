@@ -1,0 +1,19 @@
+imports:
+  - path: ../../templates/network/vpc-network.jinja
+
+resources:
+
+- name: base-vpc-network
+  type: ../../templates/network/vpc-network.jinja
+  properties:
+    name: base
+    subnets:
+      - name: compute
+        range: 10.10.20.0/24
+      - name: kubernetes
+        range: 10.10.21.0/25
+        secondaryIpRanges:
+          - name: services
+            range: 10.10.21.128/25
+          - name: pods
+            range: 10.10.22.0/24
