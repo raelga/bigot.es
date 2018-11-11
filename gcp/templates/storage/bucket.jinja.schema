@@ -1,0 +1,51 @@
+info:
+  title: Google Cloud Storage bucket
+  author: Rael Garcia <mail@rael.io>
+  description: Creates a Google Storage bucket resource
+  version: 1.0
+
+required:
+- name
+
+properties:
+
+  name:
+    type: string
+    description: Bucket name (required), must be unique in GCP.
+
+  storageClass:
+    type: string
+    default: regional
+    description: Storage Class for the bucket.
+
+  location:
+    type: string
+    default: europe-west1
+    description: Region / Zone were the bucket will be deployed.
+
+  websiteConfig:
+    type: object
+    default: {}
+    description: >
+      The bucket's website configuration, controlling how the servicebehaves
+      when accessing bucket contents as a web site.
+    required:
+      - mainPageSuffix
+      - notFoundPage
+    properties:
+
+      mainPageSuffix:
+        type: string
+        default: index.html
+        description: >
+          If the requested object path is missing, the service will ensure the
+          path has a trailing '/', append this suffix, and attempt to retrieve
+          the resulting object.
+
+      notFoundPage:
+        type: string
+        default: 404.html
+        description: >
+          If the requested object path is missing, and any mainPageSuffix
+          object is missing, if applicable, the service will return the named
+          object from this bucket as the content for a 404 Not Found result.
