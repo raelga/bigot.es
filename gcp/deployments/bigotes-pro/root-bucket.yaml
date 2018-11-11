@@ -1,0 +1,10 @@
+imports:
+  - path: ../../templates/storage/bucket.jinja
+
+resources:
+  - name: root-bucket
+    type: ../../templates/storage/bucket.jinja
+    properties:
+      name: bigot.es
+      websiteConfig:
+        notFoundPage: index.html
