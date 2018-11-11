@@ -12,3 +12,6 @@ help:
 
 upload-bigot.es:
 	gsutil rsync -R bigot.es/ gs://bigot.es
+
+upload-cdn.bigot.es:
+	gsutil rsync -R cdn.bigot.es/ gs://cdn.bigot.es
