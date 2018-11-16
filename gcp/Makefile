@@ -73,6 +73,8 @@ gcloud-config-bigotes-pro:
 
 # Targets
 
+$(eval $(call DM_TARGETS,rael-base,bigotes-pro-project))
+
 $(eval $(call DM_TARGETS,bigotes-pro,base-network))
 $(eval $(call DM_TARGETS,bigotes-pro,cdn-bucket))
 $(eval $(call DM_TARGETS,bigotes-pro,root-bucket))
