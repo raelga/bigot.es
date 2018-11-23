@@ -31,7 +31,7 @@ help:
 define DM_TARGETS
 
 SHELL = /bin/bash
- 
+
 PHONY += .set-$(1)-$(2) .dm-preview-$(1)-$(2)
 PHONY += dm-update-$(1)-$(2) dm-create-$(1)-$(2)
 
@@ -78,3 +78,4 @@ $(eval $(call DM_TARGETS,rael-base,bigotes-pro-project))
 $(eval $(call DM_TARGETS,bigotes-pro,base-network))
 $(eval $(call DM_TARGETS,bigotes-pro,cdn-bucket))
 $(eval $(call DM_TARGETS,bigotes-pro,root-bucket))
+$(eval $(call DM_TARGETS,bigotes-pro,bonnie-cluster))
