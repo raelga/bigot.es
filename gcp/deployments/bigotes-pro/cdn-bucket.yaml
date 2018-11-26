@@ -1,10 +1,38 @@
 imports:
   - path: ../../templates/storage/bucket.jinja
+  - path: ../../templates/iam/service-account.jinja
 
 resources:
-  - name: cdn-bucket
+
+  - name: bucket-sa
+    type: ../../templates/iam/service-account.jinja
+    properties:
+      name: cdn-bucket
+      description: Service account for the cdn.bigot.es bucket
+      keys:
+        - alpha
+
+  - name: bucket
     type: ../../templates/storage/bucket.jinja
     properties:
       name: cdn.bigot.es
       websiteConfig:
         notFoundPage: index.html
+      acl:
+        - name: bucket-sa
+          entity: user-$(ref.bucket-sa.email)
+          role: WRITER
+
+outputs:
+
+  - name: bucket
+    value: $(ref.bucket.name)
+
+  - name: bucket-sa
+    value: $(ref.bucket-sa.email)
+
+  - name: bucket-sa-alpha-rest-key
+    value: $(ref.bucket-sa.alpha-rest-key)
+
+  - name: bucket-sa-alpha-base64-key
+    value: $(ref.bucket-sa.alpha-base64-key)
