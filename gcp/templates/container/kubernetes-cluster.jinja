@@ -114,12 +114,18 @@ resources:
 {% if properties.type == 'REGIONAL' %}
   type: gcp-types/container-v1:projects.locations.clusters.nodePools
   properties:
-    parent: "projects/" + {{ env.project }} + "/locations/" + {{ properties.network.location }} + "/clusters/" + properties.network.location, $(ref.{{ properties.name }}.name)
+    parent: {{ "projects/{}/locations/{}/clusters/{}".format(
+      env.project, properties.network.location, properties.name
+    )}}
 {% elif properties.type == 'LOCAL' %}
   type: gcp-types/container-v1:projects.zones.clusters.nodePools
   properties:
-    parent: "projects/" + {{ env.project }} + "/zones/" + {{ properties.network.location }} + "/clusters/" + properties.network.location, $(ref.{{ properties.name }}.name)
+    parent: {{ "projects/{}/zones/{}/clusters/{}".format(
+      env.project, properties.network.location, properties.name
+    )}}
+    zone: {{ properties.network.location }}
 {% endif %}
+    clusterId: {{ properties.name }}
     nodePool:
       name: {{ nodePool.name }}-pool
       version: {{ nodePool.version | default (properties.initialVersion) }}
