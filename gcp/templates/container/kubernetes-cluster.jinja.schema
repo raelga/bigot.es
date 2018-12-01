@@ -166,8 +166,35 @@ properties:
           type: number
           description: >
             Size of the disk attached to each node, specified in GB.
-            The smallest allowed disk size is 10GB.
+            The smallest allowed disk size is 10GB (default value).
           default: 10
+        taints:
+          type: array
+          description: >
+            Taints allow a node to repel a set of pods.
+            https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: Key for taint.
+              value:
+                type: string
+                description: Value for taint.
+              effect:
+                enum:
+                  - EFFECT_UNSPECIFIED
+                  - NO_SCHEDULE
+                  - PREFER_NO_SCHEDULE
+                  - NO_EXECUTE
+                description: >
+                  Possible values for Effect in taint.
+                    EFFECT_UNSPECIFIED  Not set
+                    NO_SCHEDULE	        NoSchedule
+                    PREFER_NO_SCHEDULE  PreferNoSchedule
+                    NO_EXECUTE          NoExecute
+                  default: NO_SCHEDULE
 
   mode:
     type: string
