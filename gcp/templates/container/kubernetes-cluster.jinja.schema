@@ -180,8 +180,11 @@ properties:
                 type: string
                 description: Key for taint.
               value:
-                type: string
+                type:
+                  - string
+                  - boolean
                 description: Value for taint.
+                default: true
               effect:
                 enum:
                   - EFFECT_UNSPECIFIED
@@ -194,6 +197,7 @@ properties:
                     NO_SCHEDULE	        NoSchedule
                     PREFER_NO_SCHEDULE  PreferNoSchedule
                     NO_EXECUTE          NoExecute
+                    https://cloud.google.com/kubernetes-engine/docs/how-to/node-taints
                   default: NO_SCHEDULE
 
   mode:

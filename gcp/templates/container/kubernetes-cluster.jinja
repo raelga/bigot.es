@@ -151,7 +151,12 @@ resources:
           - https://www.googleapis.com/auth/servicecontrol
           - https://www.googleapis.com/auth/service.management.readonly
         {% if nodePool.taints %}
-        taints: {{ nodePool.taints }}
+        taints:
+          {% for taint in nodePool.taints %}
+          - key: {{ taint.key }}
+            value: "{{ taint.value }}"
+            effect: {{ taint.effect }}
+          {% endfor %}
         {% endif %}
   metadata:
     dependsOn:
