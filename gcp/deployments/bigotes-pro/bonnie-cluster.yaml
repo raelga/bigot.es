@@ -18,6 +18,14 @@ resources:
           taints:
             - key: CriticalAddonsOnly
               effect: PREFER_NO_SCHEDULE
+        - name: edge-rf-f1m
+          preemptible: false
+          autoscaling: false
+          tags:
+            - gke-bonnie-external-ip
+          taints:
+            - key: FailbackOnly
+              effect: NO_EXECUTE
 
 outputs:
   - name: cluster-name
