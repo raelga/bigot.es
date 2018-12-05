@@ -11,6 +11,13 @@ resources:
       network:
         subnet: kubernetes-sn
         location: europe-west1-b
+      nodePools:
+        - name: addons-pf-f1m
+          preemptible: true
+          autoscaling: false
+          taints:
+            - key: CriticalAddonsOnly
+              effect: PREFER_NO_SCHEDULE
 
 outputs:
   - name: cluster-name
