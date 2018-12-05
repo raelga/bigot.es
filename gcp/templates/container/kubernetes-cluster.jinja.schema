@@ -166,8 +166,50 @@ properties:
           type: number
           description: >
             Size of the disk attached to each node, specified in GB.
-            The smallest allowed disk size is 10GB.
+            The smallest allowed disk size is 10GB (default value).
           default: 10
+        tags:
+          type: array
+          description: >
+            The list of instance tags applied to all nodes. Tags are used to
+            identify valid sources or targets for network firewalls and are
+            specified by the client during custer or node pool creation.
+          default: [] 
+          items:
+            type: string
+            description: Tag.
+            pattern: ^[a-zA-Z0-9]([-a-zA-Z0-9]+[-a-zA-Z0-9]$)?
+        taints:
+          type: array
+          description: >
+            Taints allow a node to repel a set of pods.
+            https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: Key for taint.
+              value:
+                type:
+                  - string
+                  - boolean
+                description: Value for taint.
+                default: true
+              effect:
+                enum:
+                  - EFFECT_UNSPECIFIED
+                  - NO_SCHEDULE
+                  - PREFER_NO_SCHEDULE
+                  - NO_EXECUTE
+                description: >
+                  Possible values for Effect in taint.
+                    EFFECT_UNSPECIFIED  Not set
+                    NO_SCHEDULE	        NoSchedule
+                    PREFER_NO_SCHEDULE  PreferNoSchedule
+                    NO_EXECUTE          NoExecute
+                    https://cloud.google.com/kubernetes-engine/docs/how-to/node-taints
+                  default: NO_SCHEDULE
 
   mode:
     type: string

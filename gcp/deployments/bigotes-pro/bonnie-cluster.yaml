@@ -1,5 +1,6 @@
 imports:
   - path: ../../templates/container/kubernetes-cluster.jinja
+  - path: ../../templates/network/firewall-rule.jinja
 
 resources:
   - name: kubernetes-cluster
@@ -11,6 +12,28 @@ resources:
       network:
         subnet: kubernetes-sn
         location: europe-west1-b
+      nodePools:
+        - name: addons-pf-f1m
+          preemptible: true
+          autoscaling: false
+          taints:
+            - key: CriticalAddonsOnly
+              effect: PREFER_NO_SCHEDULE
+        - name: edge-rf-f1m
+          preemptible: false
+          autoscaling: false
+          tags:
+            - gke-bonnie-external-ip
+          taints:
+            - key: FailbackOnly
+              effect: NO_EXECUTE
+
+  - name: gke-traefik-fw-rule
+    type: ../../templates/network/firewall-rule.jinja
+    properties:
+      name: gke-bonnie-traefik-all
+      targetTags:
+        - gke-bonnie-external-ip
 
 outputs:
   - name: cluster-name

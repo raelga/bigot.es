@@ -6,11 +6,11 @@ resources:
     accountId: {{ properties.name }}-gke-nodes
     displayName: VM Service Account for {{ properties.name }}-gke-nodes-sa GKE Cluster VMs
 
-- name: {{ properties.name }}-GkeNodes-custom-role
+- name: {{ properties.name }}-nodes-custom-role
   type: gcp-types/iam-v1:projects.roles
   properties:
     parent: "projects/{{ env.project }}"
-    roleId: "custom.{{ properties.name }}GkeNodes"
+    roleId: "custom.{{ properties.name }}Nodes"
     role:
         title: Custom Role for GKE cluster nodes
         description: This role allows a GKE cluster nodes work with GCP APIs
@@ -42,7 +42,7 @@ resources:
     policy: $(ref.{{ env.project }}-get-iam-policy)
     gcpIamPolicyPatch:
       add:
-        - role: $(ref.{{ properties.name }}-GkeNodes-custom-role.name)
+        - role: $(ref.{{ properties.name }}-nodes-custom-role.name)
           members:
             - serviceAccount:$(ref.{{ properties.name }}-gke-nodes-sa.email)
 
@@ -114,12 +114,18 @@ resources:
 {% if properties.type == 'REGIONAL' %}
   type: gcp-types/container-v1:projects.locations.clusters.nodePools
   properties:
-    parent: "projects/" + {{ env.project }} + "/locations/" + {{ properties.network.location }} + "/clusters/" + properties.network.location, $(ref.{{ properties.name }}.name)
+    parent: {{ "projects/{}/locations/{}/clusters/{}".format(
+      env.project, properties.network.location, properties.name
+    )}}
 {% elif properties.type == 'LOCAL' %}
   type: gcp-types/container-v1:projects.zones.clusters.nodePools
   properties:
-    parent: "projects/" + {{ env.project }} + "/zones/" + {{ properties.network.location }} + "/clusters/" + properties.network.location, $(ref.{{ properties.name }}.name)
+    parent: {{ "projects/{}/zones/{}/clusters/{}".format(
+      env.project, properties.network.location, properties.name
+    )}}
+    zone: {{ properties.network.location }}
 {% endif %}
+    clusterId: {{ properties.name }}
     nodePool:
       name: {{ nodePool.name }}-pool
       version: {{ nodePool.version | default (properties.initialVersion) }}
@@ -144,6 +150,15 @@ resources:
           - https://www.googleapis.com/auth/monitoring
           - https://www.googleapis.com/auth/servicecontrol
           - https://www.googleapis.com/auth/service.management.readonly
+        tags: {{ nodePool.tags }}
+        {% if nodePool.taints %}
+        taints:
+          {% for taint in nodePool.taints %}
+          - key: {{ taint.key }}
+            value: "{{ taint.value }}"
+            effect: {{ taint.effect }}
+          {% endfor %}
+        {% endif %}
   metadata:
     dependsOn:
       - {{ properties.name }}
