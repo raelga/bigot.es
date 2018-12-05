@@ -168,6 +168,17 @@ properties:
             Size of the disk attached to each node, specified in GB.
             The smallest allowed disk size is 10GB (default value).
           default: 10
+        tags:
+          type: array
+          description: >
+            The list of instance tags applied to all nodes. Tags are used to
+            identify valid sources or targets for network firewalls and are
+            specified by the client during custer or node pool creation.
+          default: [] 
+          items:
+            type: string
+            description: Tag.
+            pattern: ^[a-zA-Z0-9]([-a-zA-Z0-9]+[-a-zA-Z0-9]$)?
         taints:
           type: array
           description: >
