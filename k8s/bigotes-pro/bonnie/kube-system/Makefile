@@ -13,3 +13,8 @@ kubectl-bootstrap-coreDNS:
 	kubectl scale --replicas=0 deployment/kube-dns-autoscaler --namespace=kube-system
 	kubectl scale --replicas=0 deployment/kube-dns --namespace=kube-system
 
+kubectl-bootstrap-traefik:
+	kubectl apply --as=admin --as-group=system:masters -f rbac/traefik.yaml
+	kubectl apply -f deployments/traefik.yaml
+	kubectl apply -f services/traefik.yaml
+	kubectl apply -f pdb/traefik.yaml
