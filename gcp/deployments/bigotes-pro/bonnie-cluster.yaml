@@ -14,20 +14,25 @@ resources:
         subnet: kubernetes-sn
         location: europe-west1-b
       nodePools:
-        - name: addons-pf-f1m
-          preemptible: true
-          autoscaling: false
-          taints:
-            - key: CriticalAddonsOnly
-              effect: PREFER_NO_SCHEDULE
         - name: edge-rf-f1m
           preemptible: false
           autoscaling: false
           tags:
             - gke-bonnie-external-ip
           taints:
-            - key: FailbackOnly
+            - key: EdgeOnly
               effect: NO_EXECUTE
+        - name: addons-pf-f1m
+          preemptible: true
+          autoscaling: false
+          taints:
+            - key: CriticalAddonsOnly
+              effect: PREFER_NO_SCHEDULE
+        # - name: compute-pa-1s1700m
+        #   machineType: g1-small
+        #   taints:
+        #     - key: IngressOnly
+        #       effect: NO_EXECUTE
 
   # Pending DM issue
   # https://github.com/GoogleCloudPlatform/deploymentmanager-samples/issues/283
