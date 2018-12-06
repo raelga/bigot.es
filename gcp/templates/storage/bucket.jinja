@@ -10,8 +10,12 @@ resources:
         mainPageSuffix: {{ properties["websiteConfig"].mainPageSuffix }}
         notFoundPage: {{ properties["websiteConfig"].notFoundPage }}
       {% endif %}
-    accessControl:
-      gcpIamPolicy:
+
+  - name: {{ properties['name'] }}-iam-policy
+    action: gcp-types/storage-v1:storage.buckets.setIamPolicy
+    properties: 
+      bucket: {{ properties['name'] }}
+      project: {{ env.project }}
         bindings:
           - role: roles/storage.admin
             members:
