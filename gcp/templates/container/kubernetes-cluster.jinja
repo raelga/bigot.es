@@ -201,6 +201,27 @@ resources:
       - {{ properties.name }}
 {% endfor %}
 
+{% set K8S_CONFIGMAPS_COLLECTION = '/api/v1/namespaces/{namespace}/configmaps' %}
+
+{% if properties.network.nonMasqueradeCIDRs %}
+- name: k8s-ip-masq-agent-configmap
+  type: {{ env.project }}/k8s-v1-type:{{ K8S_CONFIGMAPS_COLLECTION }}
+  properties:
+    apiVersion: v1
+    kind: ConfigMap
+    namespace: kube-system
+    metadata:
+      name: ip-masq-agent
+      namespace: kube-system
+    data:
+      config: |
+        nonMasqueradeCIDRs:
+          - {{ properties.network.nonMasqueradeCIDRs }}
+        resyncInterval: 60s
+  metadata:
+    dependsOn:
+      - k8s-v1-type
+{% endif %}
 
 outputs:
   - name: project
