@@ -1,6 +1,7 @@
 imports:
   - path: ../../templates/container/kubernetes-cluster.jinja
   - path: ../../templates/network/firewall-rule.jinja
+  - path: ../../templates/storage/gcr-bucket-iam-policy.jinja
 
 resources:
   - name: kubernetes-cluster
@@ -27,6 +28,15 @@ resources:
           taints:
             - key: FailbackOnly
               effect: NO_EXECUTE
+
+  # Pending DM issue
+  # https://github.com/GoogleCloudPlatform/deploymentmanager-samples/issues/283
+  # - name: gke-gcr-bucket-iam-policy
+  #   type: ../../templates/storage/gcr-bucket-iam-policy.jinja
+  #   properties:
+  #     name: gke-bonnie-gcr-pull-iam-policy
+  #     region: eu
+  #     serviceAccount: $(ref.kubernetes-cluster.nodes-sa)
 
   - name: gke-traefik-fw-rule
     type: ../../templates/network/firewall-rule.jinja
