@@ -29,7 +29,6 @@ properties:
 
   websiteConfig:
     type: object
-    default: {}
     description: >
       The bucket's website configuration, controlling how the servicebehaves
       when accessing bucket contents as a web site.
