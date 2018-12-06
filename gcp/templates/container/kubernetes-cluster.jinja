@@ -167,8 +167,68 @@ resources:
 
 {% endif %}
 
+{% set K8S_ENDPOINTS = {
+    'v1': 'api/v1',
+    'apps-v1beta1': 'apis/apps/v1beta1',
+    'extensions-v1beta1': 'apis/extensions/v1beta1',
+    'rbac-v1': 'apis/rbac.authorization.k8s.io/v1',
+  }
+%}
+
+{% for typeSuffix, endpoint in K8S_ENDPOINTS.iteritems() %}
+- name: k8s-{{ typeSuffix }}-type
+  type: deploymentmanager.v2beta.typeProvider
+  properties:
+    options:
+      validationOptions:
+        schemaValidation: IGNORE_WITH_WARNINGS
+      inputMappings:
+      - fieldName: name
+        location: PATH
+        methodMatch: ^(GET|DELETE|PUT)$
+        value: $.ifNull($.resource.properties.metadata.name, $.resource.name)
+      - fieldName: metadata.name
+        location: BODY
+        methodMatch: ^(PUT|POST)$
+        value: $.ifNull($.resource.properties.metadata.name, $.resource.name)
+      - fieldName: Authorization
+        location: HEADER
+        value: >
+          $.concat("Bearer ", $.googleOauth2AccessToken())
+    descriptorUrl: https://$(ref.{{ properties.name }}.endpoint)/swaggerapi/{{ endpoint }}
+  metadata:
+    dependsOn:
+      - {{ properties.name }}
+{% endfor %}
+
+{% set K8S_CONFIGMAPS_COLLECTION = '/api/v1/namespaces/{namespace}/configmaps' %}
+
+{% if properties.network.nonMasqueradeCIDRs %}
+- name: k8s-ip-masq-agent-configmap
+  type: {{ env.project }}/k8s-v1-type:{{ K8S_CONFIGMAPS_COLLECTION }}
+  properties:
+    apiVersion: v1
+    kind: ConfigMap
+    namespace: kube-system
+    metadata:
+      name: ip-masq-agent
+      namespace: kube-system
+    data:
+      config: |
+        nonMasqueradeCIDRs:
+          - {{ properties.network.nonMasqueradeCIDRs }}
+        resyncInterval: 60s
+  metadata:
+    dependsOn:
+      - k8s-v1-type
+{% endif %}
+
 outputs:
+  - name: project
+    value: {{ env.project }}
   - name: name
     value: $(ref.{{ properties.name }}.name)
+  - name: nodes-sa
+    value: $(ref.{{ properties.name }}-gke-nodes-sa.email)
   - name: endpoint
     value: $(ref.{{ properties.name }}.endpoint)
