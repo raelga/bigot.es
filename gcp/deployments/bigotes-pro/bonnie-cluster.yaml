@@ -40,3 +40,5 @@ outputs:
     value: $(ref.kubernetes-cluster.name)
   - name: cluster-endpoint
     value: $(ref.kubernetes-cluster.endpoint)
+  - name: cluster-nodes-sa
+    value: $(ref.kubernetes-cluster.nodes-sa)
