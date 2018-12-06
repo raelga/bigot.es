@@ -14,7 +14,11 @@ properties:
     description: Bucket name (required), must be unique in GCP.
 
   storageClass:
-    type: string
+    enum:
+      - multi_regional
+      - regional
+      - nearline
+      - coldline
     default: regional
     description: Storage Class for the bucket.
 
