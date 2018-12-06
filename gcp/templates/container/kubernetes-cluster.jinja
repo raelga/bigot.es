@@ -167,6 +167,41 @@ resources:
 
 {% endif %}
 
+{% set K8S_ENDPOINTS = {
+    'v1': 'api/v1',
+    'apps-v1beta1': 'apis/apps/v1beta1',
+    'extensions-v1beta1': 'apis/extensions/v1beta1',
+    'rbac-v1': 'apis/rbac.authorization.k8s.io/v1',
+  }
+%}
+
+{% for typeSuffix, endpoint in K8S_ENDPOINTS.iteritems() %}
+- name: k8s-{{ typeSuffix }}-type
+  type: deploymentmanager.v2beta.typeProvider
+  properties:
+    options:
+      validationOptions:
+        schemaValidation: IGNORE_WITH_WARNINGS
+      inputMappings:
+      - fieldName: name
+        location: PATH
+        methodMatch: ^(GET|DELETE|PUT)$
+        value: $.ifNull($.resource.properties.metadata.name, $.resource.name)
+      - fieldName: metadata.name
+        location: BODY
+        methodMatch: ^(PUT|POST)$
+        value: $.ifNull($.resource.properties.metadata.name, $.resource.name)
+      - fieldName: Authorization
+        location: HEADER
+        value: >
+          $.concat("Bearer ", $.googleOauth2AccessToken())
+    descriptorUrl: https://$(ref.{{ properties.name }}.endpoint)/swaggerapi/{{ endpoint }}
+  metadata:
+    dependsOn:
+      - {{ properties.name }}
+{% endfor %}
+
+
 outputs:
   - name: project
     value: {{ env.project }}
