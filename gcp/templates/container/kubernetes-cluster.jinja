@@ -168,7 +168,11 @@ resources:
 {% endif %}
 
 outputs:
+  - name: project
+    value: {{ env.project }}
   - name: name
     value: $(ref.{{ properties.name }}.name)
+  - name: nodes-sa
+    value: $(ref.{{ properties.name }}-gke-nodes-sa.email)
   - name: endpoint
     value: $(ref.{{ properties.name }}.endpoint)
