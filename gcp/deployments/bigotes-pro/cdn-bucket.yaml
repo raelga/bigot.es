@@ -3,7 +3,6 @@ imports:
   - path: ../../templates/iam/service-account.jinja
 
 resources:
-
   - name: bucket-sa
     type: ../../templates/iam/service-account.jinja
     properties:
@@ -22,9 +21,12 @@ resources:
         - name: bucket-sa
           entity: user-$(ref.bucket-sa.email)
           role: WRITER
+      bindings:
+        - role: roles/storage.admin
+          members:
+            - serviceAccount:$(ref.bucket-sa.email)
 
 outputs:
-
   - name: bucket
     value: $(ref.bucket.name)
 
