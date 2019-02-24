@@ -9,7 +9,7 @@ resources:
     name: base
     subnets:
       - name: compute
-        range: 10.60.0.0/21
+        range: 10.60.4.0/22
       - name: kubernetes
         range: 10.60.8.0/22
         secondaryIpRanges:
