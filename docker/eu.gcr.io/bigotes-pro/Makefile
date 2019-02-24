@@ -17,17 +17,24 @@ help:
 		| awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' \
 		| egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | sort
 
-
 gcloud-config-bigotes-pro-docker:
 	@gcloud config set project ${GCP_PROJECT}
 	@gcloud config set compute/region ${GCP_REGION}
 	@gcloud auth configure-docker
 
-$(addprefix build-,$(IMAGES)): build-%:
-	docker build -t $*:$(TAG) $*
+$(addprefix docker-build-,$(IMAGES)): docker-build-%:
+	test -d $*/context \
+	&&	docker build -t $(REGISTRY)/$*:$(TAG) -f $*/Dockerfile $*/context \
+	||	docker build -t $(REGISTRY)/$*:$(TAG) $*
 
-$(addprefix tag-,$(IMAGES)): tag-%:
-	docker tag $*:$(TAG) $(REGISTRY)/$*:$(TAG)
-
-$(addprefix push-,$(IMAGES)): push-%: tag-%
+$(addprefix docker-push-,$(IMAGES)): docker-push-%:
 	docker push $(REGISTRY)/$*:$(TAG)
+
+$(addprefix docker-tag-latest-,$(IMAGES)): docker-tag-latest-%:
+	docker tag $(REGISTRY)/$*:$(TAG) $(REGISTRY)/$*:latest
+
+$(addprefix docker-push-latest-,$(IMAGES)): docker-push-latest-%: docker-tag-latest-%
+	docker push $(REGISTRY)/$*:latest
+
+$(addprefix docker-run-,$(IMAGES)): docker-run-%:
+	docker run -ti --rm $(REGISTRY)/$*:$(TAG) /bin/bash
