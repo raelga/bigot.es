@@ -1,0 +1,4 @@
+[submodule "gcp/templates"]
+	path = gcp/templates
+	url = git@github.com:raelga/gcp-dm-templates.git
+	branch = master

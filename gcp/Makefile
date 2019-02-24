@@ -1,4 +1,3 @@
-
 # For interactive prompt
 
 SHELL = /bin/bash
@@ -8,75 +7,55 @@ SHELL = /bin/bash
 help:
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null \
 		| awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' \
-		| egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | sort
-
-#
-# DM_TARGETS function to generate deployment manager targets
-#
-# Params:
-# $(1): Project id, Google Cloud project id where to deploy.
-#	$(2): YAML definition to deploy, relative to deployments path without `.yaml`.
-#	$(3): Deployments path, where the yaml resides.
-#       Can be empty, defaults to: ${DEFAULT_DEPLOYMENTS_PATH}/${project_id}.
-#
-# Public targets:
-#	dm-update-$(project-id)-$(yaml-definition): Update action with deplyoment manager.
-#	dm-create-$(project-id)-$(yaml-definition): Create action with deployment manager.
-#
-# Private targets:
-#	.set-$(project-id)-$(yaml-definition): Sets the deployment variables needed for the deploy.
-#	.dm-preview-$(project-id)-$(yaml-definition): Preview action with deployment manager
-#
-
-define DM_TARGETS
-
-SHELL = /bin/bash
-
-PHONY += .set-$(1)-$(2) .dm-preview-$(1)-$(2)
-PHONY += dm-update-$(1)-$(2) dm-create-$(1)-$(2)
-
-.set-$(1)-$(2):
-	$(eval project_id	:= $(1))
-	$(eval dm_name		:= ${project_id}-$(2))
-	$(eval dm_config	:= $(if $(3), $(3)/${dm_name}.yaml, ${DEFAULT_DEPLOYMENTS_PATH}/${project_id}/$(2).yaml))
-
-dm-create-$(1)-$(2): .set-$(1)-$(2)
-	gcloud deployment-manager deployments \
-		create ${dm_name} \
-		--config ${dm_config} \
-		--project ${project_id}
-
-.dm-preview-$(1)-$(2): .set-$(1)-$(2)
-	gcloud deployment-manager deployments \
-		update ${dm_name} \
-		--config ${dm_config} \
-		--project ${project_id} \
-		--preview
-
-dm-update-$(1)-$(2): .set-$(1)-$(2) .dm-preview-$(1)-$(2)
-	@echo -n "Ready to update, are you sure? Ctrl+C to cancel " \
-		&& read ans
-	gcloud deployment-manager deployments \
-		update ${dm_name} \
-		--project ${project_id}
-
-endef
+		| egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | sort -r
 
 # Default settings
 
 DEFAULT_REGION := europe-west1
 DEFAULT_DEPLOYMENTS_PATH := ./deployments
 
-gcloud-config-bigotes-pro:
-	gcloud config set project bigotes-pro
+gcloud-config-rael-base:
+	gcloud config set project rael-base
 	gcloud config set compute/region ${DEFAULT_REGION}
 
-# Targets
+# Deployment list
 
-$(eval $(call DM_TARGETS,rael-base,bigotes-pro-project))
+DEPLOYMENTS=$(shell \
+	find ${DEFAULT_DEPLOYMENTS_PATH}/* -type f -name '*.yaml' \
+	| sed "s:${DEFAULT_DEPLOYMENTS_PATH}/\(.*\).yaml:\1:g" \
+)
 
-$(eval $(call DM_TARGETS,bigotes-pro,base-network))
-$(eval $(call DM_TARGETS,bigotes-pro,cdn-bucket))
-$(eval $(call DM_TARGETS,bigotes-pro,root-bucket))
-$(eval $(call DM_TARGETS,bigotes-pro,gcr-bucket))
-$(eval $(call DM_TARGETS,bigotes-pro,bonnie-cluster))
+# Target for getting the deployment variables from the file path/name
+# The convention is ${project-id}/${folder}/${deployment-name}.yaml
+.PHONY+=$(addprefix .dm-set-,$(DEPLOYMENTS))
+$(addprefix .dm-set-,$(DEPLOYMENTS)):.dm-set-%:
+	$(eval project_id	:= $(firstword $(subst /, ,$*)))
+	$(eval dm_name		:= ${project_id}-$(lastword $(subst /, ,$*)))
+	$(eval dm_config	:= ${DEFAULT_DEPLOYMENTS_PATH}/$*.yaml)
+
+# Target for creating the deployment
+.PHONY+=$(addprefix dm-create-,$(DEPLOYMENTS))
+$(addprefix dm-create-,$(DEPLOYMENTS)):dm-create-%:.dm-set-%
+	gcloud deployment-manager deployments \
+		create ${dm_name} \
+		--config ${dm_config} \
+		--project ${project_id}
+
+# Target for updating the deployment after previewing the changes
+# Requires a manual user confirmation after the preview
+.PHONY+=$(addprefix dm-update-,$(DEPLOYMENTS))
+$(addprefix dm-update-,$(DEPLOYMENTS)):dm-update-%:.dm-set-% dm-preview-%
+	@echo -n "Ready to update, are you sure? Ctrl+C to cancel " \
+		&& read ans
+	gcloud deployment-manager deployments \
+		update ${dm_name} \
+		--project ${project_id}
+
+# Target for previewing the deployment
+.PHONY+=$(addprefix dm-preview-,$(DEPLOYMENTS))
+$(addprefix dm-preview-,$(DEPLOYMENTS)):dm-preview-%:.dm-set-%
+	gcloud deployment-manager deployments \
+		update ${dm_name} \
+		--config ${dm_config} \
+		--project ${project_id} \
+		--preview
