@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+    tier: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: web
+    spec:
+      containers:
+        - name: wordpress
+          image: eu.gcr.io/bigotes-pro/wordpress:03a5861
+          ports:
+            - name: web
+              containerPort: 80
+          livenessProbe:
+            tcpSocket:
+              port: web
+            initialDelaySeconds: 15
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 50m
+              memory: 50Mi
+            limits:
+              cpu: 150m
+              memory: 150Mi
+      tolerations:
+        - key: FailbackOnly
+          operator: 'Exists'
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - hello
+              topologyKey: 'kubernetes.io/hostname'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress
+  labels:
+    app: hello
+  annotations:
+    traefik.ingress.kubernetes.io/load-balancer-method: drr
+spec:
+  selector:
+    app: wordpress
+    tier: web
+  ports:
+    - port: 80
+      targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cms.bigot.es
+spec:
+  rules:
+    - host: cms.bigot.es
+      http:
+        paths:
+          - backend:
+              serviceName: wordpress
+              servicePort: 80
