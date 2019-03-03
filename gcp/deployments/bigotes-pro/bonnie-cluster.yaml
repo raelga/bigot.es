@@ -1,6 +1,6 @@
 imports:
   - path: ../../templates/container/kubernetes-cluster.jinja
-  - path: ../../templates/network/firewall-rule.jinja
+  - path: ../../templates/compute/firewall-rule.jinja
   - path: ../../templates/storage/gcr-bucket-iam-policy.jinja
 
 resources:
@@ -14,26 +14,26 @@ resources:
         subnet: kubernetes-sn
         location: europe-west1-b
         nonMasqueradeCIDRs: 10.60.0.0/21
-      nodePools:
-        - name: edge-rf-f1m
-          preemptible: false
-          autoscaling: false
-          tags:
-            - gke-bonnie-external-ip
-          taints:
-            - key: EdgeOnly
-              effect: NO_EXECUTE
-        - name: addons-pf-f1m
-          preemptible: true
-          autoscaling: false
-          taints:
-            - key: CriticalAddonsOnly
-              effect: PREFER_NO_SCHEDULE
-        # - name: compute-pa-1s1700m
-        #   machineType: g1-small
-        #   taints:
-        #     - key: IngressOnly
-        #       effect: NO_EXECUTE
+ #    nodePools:
+ #        - name: edge-rf-f1m
+ #          preemptible: false
+ #          autoscaling: false
+ #          tags:
+ #            - gke-bonnie-external-ip
+ #          taints:
+ #            - key: EdgeOnly
+ #              effect: NO_EXECUTE
+ #        - name: addons-pf-f1m
+ #          preemptible: true
+ #          autoscaling: false
+ #          taints:
+ #            - key: CriticalAddonsOnly
+ #              effect: PREFER_NO_SCHEDULE
+ #        - name: compute-pa-1s1700m
+ #          machineType: g1-small
+ #          taints:
+ #            - key: IngressOnly
+ #              effect: NO_EXECUTE
 
   # Pending DM issue
   # https://github.com/GoogleCloudPlatform/deploymentmanager-samples/issues/283
@@ -45,7 +45,7 @@ resources:
   #     serviceAccount: $(ref.kubernetes-cluster.nodes-sa)
 
   - name: gke-traefik-fw-rule
-    type: ../../templates/network/firewall-rule.jinja
+    type: ../../templates/compute/firewall-rule.jinja
     properties:
       name: gke-bonnie-traefik-all
       targetTags:
