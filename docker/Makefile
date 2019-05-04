@@ -1,12 +1,8 @@
 
-GCP_PROJECT ?= bigotes-pro
-GCP_REGION ?= europe-west1
-
-REGISTRY ?= eu.gcr.io/${GCP_PROJECT}
 TAG ?= $(shell git rev-parse --verify --short HEAD)
 
 DOCKERFILES = $(shell find * -type f -name Dockerfile)
-IMAGES = $(subst /,\:,$(subst /Dockerfile,,$(DOCKERFILES)))
+IMAGES = $(subst /Dockerfile,,$(DOCKERFILES))
 
 .PHONY: help
 
@@ -17,17 +13,16 @@ help:
 		| awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' \
 		| egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | sort
 
-
-gcloud-config-bigotes-pro-docker:
-	@gcloud config set project ${GCP_PROJECT}
-	@gcloud config set compute/region ${GCP_REGION}
-	@gcloud auth configure-docker
+$(addprefix .docker-set-,$(IMAGES)): .docker-set-%:
+	$(eval registry		:= $(firstword $(subst /, ,$*)))
+	$(eval repository	:= $(firstword $(subst /, ,$(subst $(registry)/,,$*))))
+	$(eval image		:= $(lastword $(subst /, ,$*)))
 
 $(addprefix build-,$(IMAGES)): build-%:
-	docker build -t $*:$(TAG) $*
+	docker build -t $*:$(TAG) -f $*/Dockerfile $*/context
 
 $(addprefix tag-,$(IMAGES)): tag-%:
-	docker tag $*:$(TAG) $(REGISTRY)/$*:$(TAG)
+	docker tag $*:$(TAG) $*:$(TAG)
 
 $(addprefix push-,$(IMAGES)): push-%: tag-%
-	docker push $(REGISTRY)/$*:$(TAG)
+	docker push $*:$(TAG)
