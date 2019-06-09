@@ -28,6 +28,20 @@ function envo_magazine_widget_date_comments( ) {
 	</span>
 	<?php
 }
+
+function bigotes_author_meta( ) {
+?>
+	<div class="author-meta">
+		<span class="author-meta-by"><?php esc_html_e( 'Por', 'envo-magazine' ); ?></span>
+		<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ) ); ?>">
+			<?php the_author(); ?>
+		</a>
+		<span class="author-meta-by"><?php esc_html_e( 'el', 'envo-magazine' ); ?></span>
+		<?php echo esc_html( get_the_date() ); ?>
+	</div>
+<?php	
+}
+
 add_action( 'envo_magazine_generate_footer', 'envo_magazine_generate_construct_footer' );
 
 function envo_magazine_generate_construct_footer() {
