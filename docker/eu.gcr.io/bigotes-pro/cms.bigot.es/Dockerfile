@@ -12,7 +12,7 @@ RUN while read plugin || [ -n "$plugin" ]; do \
     && echo "Plugin ${plugin} downloaded."; \
     done < /tmp/wp-plugins/plugins.list
 
-FROM wordpress:5.1 as wp
+FROM wordpress:5.2 as wp
 
 COPY --chown=www-data wp-content /var/www/html/wp-content
 COPY --from=wp-plugins --chown=www-data /tmp/wp-plugins /var/www/html/wp-content/plugins/
