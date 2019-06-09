@@ -3,8 +3,12 @@ FROM bash:5.0 as wp-plugins
 ADD plugins.list /tmp/wp-plugins/plugins.list
 
 RUN while read plugin || [ -n "$plugin" ]; do \
-    wget -q -O - https://github.com/${plugin/\:*/}/archive/${plugin/*:/}.tar.gz \
-    | tar zx -C /tmp/wp-plugins \
+    echo echo ${plugin} | grep -q 'tar.gz' \
+    && wget -q -O - ${plugin} | tar zx -C /tmp/wp-plugins \
+    ||  { \
+        apk add unzip; \
+        wget -q -O - ${plugin} | busybox unzip -q -d /tmp/wp-plugins -; \
+    } \
     && echo "Plugin ${plugin} downloaded."; \
     done < /tmp/wp-plugins/plugins.list
 
