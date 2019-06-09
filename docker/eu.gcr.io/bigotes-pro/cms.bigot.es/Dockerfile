@@ -1,4 +1,4 @@
-FROM bash:5.0 as wp-plugins
+FROM bash:5.0 as wp-content
 
 ADD plugins.list /tmp/wp-plugins/plugins.list
 
@@ -12,10 +12,23 @@ RUN while read plugin || [ -n "$plugin" ]; do \
     && echo "Plugin ${plugin} downloaded."; \
     done < /tmp/wp-plugins/plugins.list
 
+ADD themes.list /tmp/wp-themes/themes.list
+
+RUN while read theme || [ -n "$theme" ]; do \
+    echo echo ${theme} | grep -q 'tar.gz' \
+    && wget -q -O - ${theme} | tar zx -C /tmp/wp-themes \
+    ||  { \
+        apk add unzip; \
+        wget -q -O - ${theme} | busybox unzip -q -d /tmp/wp-themes -; \
+    } \
+    && echo "Theme ${theme} downloaded."; \
+    done < /tmp/wp-themes/themes.list
+
 FROM wordpress:5.2 as wp
 
 COPY --chown=www-data wp-content /var/www/html/wp-content
-COPY --from=wp-plugins --chown=www-data /tmp/wp-plugins /var/www/html/wp-content/plugins/
+COPY --from=wp-content --chown=www-data /tmp/wp-plugins /var/www/html/wp-content/plugins/
+COPY --from=wp-content --chown=www-data /tmp/wp-themes /var/www/html/wp-content/themes/
 
 RUN { mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini; \
 		echo 'opcache.memory_consumption=64'; \
