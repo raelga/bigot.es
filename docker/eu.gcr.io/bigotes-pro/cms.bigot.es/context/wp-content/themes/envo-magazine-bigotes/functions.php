@@ -13,6 +13,13 @@ function envo_magazine_child_enqueue_styles() {
 
 }
 
+function the_archive_title_name( $before = '', $after = '' ) {
+    $title = get_the_archive_title();
+
+    if ( ! empty( $title ) ) {
+      echo $before . trim(strstr($title, ' ')) . $after;
+    }
+}
 
 add_action( 'envo_magazine_generate_footer', 'envo_magazine_generate_construct_footer' );
 
