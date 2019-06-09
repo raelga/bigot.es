@@ -1,0 +1,44 @@
+/*
+ Theme Name: Envo Magazine Bigotes
+ Theme URI: https://bigot.es/
+ Description: bigot.es child theme for Envo Magazine
+ Author: Rael Garcia
+ Author URI: https://rael.io/
+ Template: envo-magazine
+ Version: 1.0.0
+*/
+
+.page-title h1 {
+    font-size: 42px;
+}
+
+.widget-title h3:before {
+	background-color: #000;
+}
+
+.comments-meta:before,
+.cat-links a:before {
+    background-color: #FF8622;
+}
+
+li.home-icon.front_page_on {
+    background-color: #f2563d;
+}
+
+li.home-icon.front_page_on:before {
+    background-color: #fa932d;
+}
+
+.posted-date { 
+    margin: 20px;
+}
+
+@media (min-width: 768px) {  
+    .single-title {
+        font-size: 42px;
+    }
+    .single-content {
+        font-size: 20px;
+    }
+}
+
