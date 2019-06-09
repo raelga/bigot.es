@@ -21,6 +21,13 @@ function the_archive_title_name( $before = '', $after = '' ) {
     }
 }
 
+function envo_magazine_widget_date_comments( ) {
+	?>
+	<span class="posted-date">
+		<?php echo esc_html( get_the_date() ); ?>
+	</span>
+	<?php
+}
 add_action( 'envo_magazine_generate_footer', 'envo_magazine_generate_construct_footer' );
 
 function envo_magazine_generate_construct_footer() {
