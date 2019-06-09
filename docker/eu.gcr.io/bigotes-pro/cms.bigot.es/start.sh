@@ -1,6 +1,8 @@
 #!/bin/bash
 BASE_PATH="$(dirname $(readlink -f $0))"
 
+docker stop bigotes; docker rm bigotes;
+
 docker run --detach --restart always \
   --name bigotes \
   --label 'traefik.frontend.rule=Host:cms.bigot.es' \
