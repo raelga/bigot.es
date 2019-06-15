@@ -42,3 +42,55 @@ li.home-icon.front_page_on:before {
     }
 }
 
+
+
+.postauthor-title {
+    font-size: 18px;
+    position: relative;
+    width: 100%;
+    clear: both;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+.postauthor-title:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #dddddd;
+    left: 10px;
+    z-index: 6;
+    -webkit-transform: skewX(-15deg);
+    -ms-transform: skewX(-15deg);
+    transform: skewX(-15deg);
+}
+.postauthor-title h3 {
+    font-size: 18px;
+    position: relative;
+    z-index: 5;
+    color: #fff;
+    float: left;
+    padding: 10px 20px;
+    margin: 0;
+    left: 5px;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    line-height: 18px;
+}
+.postauthor-title h3:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fa932d;
+    -webkit-transform: skewX(-15deg);
+    -ms-transform: skewX(-15deg);
+    transform: skewX(-15deg);
+    z-index: -1;
+    display: block;
+}
