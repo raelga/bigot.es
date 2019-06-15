@@ -21,7 +21,7 @@ $(addprefix .docker-set-,$(IMAGES)): .docker-set-%:
 $(addprefix build-,$(IMAGES)): build-%:
 	docker build -t $*:$(TAG) -f $*/Dockerfile $*/context
 
-$(addprefix push-,$(IMAGES)): push-%: tag-%
+$(addprefix push-,$(IMAGES)): push-%:
 	docker push $*:$(TAG)
 
 $(addprefix build-dev-,$(IMAGES)): build-dev-%: build-%
