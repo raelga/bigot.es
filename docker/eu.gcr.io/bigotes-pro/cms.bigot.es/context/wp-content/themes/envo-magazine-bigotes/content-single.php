@@ -18,23 +18,9 @@
 					<?php wp_link_pages(); ?>
 					<?php envo_magazine_entry_footer(); ?>
 					<?php envo_magazine_prev_next_links(); ?>
-					<?php
-					$authordesc = get_the_author_meta( 'description' );
-					if ( !empty( $authordesc ) ) {
-						?>
-						<div class="single-footer row">
-							<div class="col-md-4">
-								<?php get_template_part( 'template-parts/template-part', 'postauthor' ); ?>
-							</div>
-							<div class="col-md-8">
-								<?php comments_template(); ?> 
-							</div>
-						</div>
-					<?php } else { ?>
-						<div class="single-footer">
-							<?php comments_template(); ?> 
-						</div>
-					<?php } ?>
+					<div class="single-footer">
+						<?php comments_template(); ?> 
+					</div>
 				</div>        
 			<?php endwhile; ?>
 		<?php else : ?>            
