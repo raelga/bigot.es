@@ -42,7 +42,42 @@ li.home-icon.front_page_on:before {
     }
 }
 
+a, a:active, a:hover, a:focus {
+    color: #fa932d;
+}
 
+@media (min-width: 768px) {
+    .nav > li > a:before {
+        background-color: #fa932d;
+    }
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: #fa932d;
+}
+
+.nav > li.active > a:after, .current-page-parent:after {
+    background-color: #fa932d;
+}
+widget-title h3:before {
+    background-color: #fa932d;
+}
+nav.navigation.pagination .current:before {
+    background-color: #fa932d;
+    border: 1px solid #fa932d;
+}
+li.home-icon.front_page_on {
+    background-color: #fa932d;
+}
+li.home-icon.front_page_on:before {
+    background-color: #fa932d;
+}
+#searchsubmit {
+    background-color: #fa932d;
+}
+.comments-meta:before, 
+.cat-links a:before {
+    background-color: #fa932d;
+}
 
 .postauthor-title {
     font-size: 18px;
