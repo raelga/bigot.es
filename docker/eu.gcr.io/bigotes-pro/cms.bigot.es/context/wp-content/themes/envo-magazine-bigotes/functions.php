@@ -48,23 +48,23 @@ function envo_magazine_generate_construct_footer() {
 	?>
 	<div class="footer-credits-text text-center">
 		<?php 
-		printf( esc_html__( '%s' ), '<a href="https://google.com/">Condiciones de uso</a>' );
+		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/">Condiciones de uso</a>' );
 		?>
 		<span class="sep"> | </span>
 		<?php 
-		printf( esc_html__( '%s' ), '<a href="https://google.com/">Política de cookies</a>' );
+		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/politica-de-cookies/">Política de cookies</a>' );
 		?>
 		<span class="sep"> | </span>
 		<?php 
-		printf( esc_html__( '%s' ), '<a href="https://google.com/">Redacción</a>' );
+		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/">Redacción</a>' );
 		?>
 		<span class="sep"> | </span>
 		<?php 
-		printf( esc_html__( '%s' ), '<a href="https://google.com/">Contacto</a>' );
+		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/">Contacto</a>' );
 		?>
 		<hr>
 		<?php 
-		printf( esc_html__( '%s %s' ), date("Y"), '<a href="https://google.com/">bigot.es</a>' );
+		printf( esc_html__( '%s %s' ), date("Y"), '<a href="https://cms.bigot.es/">bigot.es</a>' );
 		?>
 	</div> 
 	<?php
