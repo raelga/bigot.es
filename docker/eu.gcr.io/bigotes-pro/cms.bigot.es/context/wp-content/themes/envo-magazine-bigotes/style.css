@@ -174,7 +174,7 @@ li.home-icon.front_page_on:before {
 
 @media (min-width: 768px) {
     .social-nav a {
-        font-size: 1.5em !important;
+        font-size: 1.5em;
         min-width: 20px !important;
         padding-left: 12.5px !important;
         padding-right: 12.5px !important;
@@ -187,9 +187,8 @@ li.home-icon.front_page_on:before {
         -o-transition: all 0.5s ease-in-out;
     }
     .shrink .social-nav > li > a {
-        padding-top: 15px;
         padding-bottom: 15px;
-        font-size: 14px;
+        font-size: 1.25em;;
         max-height: 50px;
     }
     .social-nav li:hover .dropdown-menu{
