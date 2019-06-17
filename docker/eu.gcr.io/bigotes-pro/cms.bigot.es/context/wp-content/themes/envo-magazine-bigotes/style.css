@@ -201,3 +201,23 @@ li.home-icon.front_page_on:before {
         -o-transition: all 0.5s ease-in-out;
     }
 }
+
+.footer-social-icons {
+    padding: 25px;
+}
+
+.footer-social-bar > li {
+    display: inline;
+    list-style-type: none;
+}
+
+.footer-social-bar a {
+    padding: 20px !important;
+    font-size: 3em;
+    line-height: 50px;
+}
+
+.footer-legal-note {
+    padding: 20px 30px;
+    color: #fff;
+}

@@ -46,7 +46,7 @@ add_action( 'envo_magazine_generate_footer', 'envo_magazine_generate_construct_f
 
 function envo_magazine_generate_construct_footer() {
 	?>
-	<div class="footer-credits-text text-center">
+	<div class="footer-legal-note text-center">
 		<?php 
 		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/">Condiciones de uso</a>' );
 		?>
@@ -62,11 +62,35 @@ function envo_magazine_generate_construct_footer() {
 		<?php 
 		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/">Contacto</a>' );
 		?>
-		<hr>
+	</div>
+	<div class="footer-social-icons text-center">	
+		<!-- The social media icon bar -->
+		<ul class="footer-social-bar">
+			<li class="social-footer-icon facebook">
+				<a href="https://www.facebook.com/somosbigotes"><i class="fa fa-facebook"></i></a>
+			</li>
+			<li class="social-footer-icon twitter">
+				<a href="https://twitter.com/somosbigotes"><i class="fa fa-twitter"></i></a>
+			</li>
+			<li class="social-footer-icon instagram">
+				<a href="https://www.instagram.com/bigot.es"><i class="fa fa-instagram"></i></a>
+			</li>
+			<li class="social-footer-icon youtube">
+				<a href="https://www.youtube.com/channel/UClmcYJZDVty5QWqT-zuJV6Q"><i class="fa fa-youtube-play"></i></a>
+			</li>
+			<li class="social-footer-icon telegram">
+				<a href="https://t.me/BigotesTelegram"><i class="fa fa-telegram"></i></a>
+			</li>
+			<li class="social-footer-icon podcast">
+				<a href="https://www.ivoox.com/escuchar-bigotes_nq_484298_1.html"><i class="fa fa-podcast"></i></a>
+			</li>
+		</ul>
+	</div>
+	<div class="footer-credits-text text-center">
 		<?php 
 		printf( esc_html__( '%s %s' ), date("Y"), '<a href="https://cms.bigot.es/">bigot.es</a>' );
 		?>
-	</div> 
+	</div>
 	<?php
 }
 
