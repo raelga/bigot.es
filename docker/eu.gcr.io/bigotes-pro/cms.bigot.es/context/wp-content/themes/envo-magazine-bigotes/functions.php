@@ -75,11 +75,11 @@ function envo_magazine_generate_construct_footer() {
 			<li class="social-footer-icon instagram">
 				<a href="https://www.instagram.com/bigot.es"><i class="fa fa-instagram"></i></a>
 			</li>
-			<li class="social-footer-icon youtube">
-				<a href="https://www.youtube.com/channel/UClmcYJZDVty5QWqT-zuJV6Q"><i class="fa fa-youtube-play"></i></a>
-			</li>
 			<li class="social-footer-icon telegram">
 				<a href="https://t.me/BigotesTelegram"><i class="fa fa-telegram"></i></a>
+			</li>
+			<li class="social-footer-icon youtube">
+				<a href="https://www.youtube.com/channel/UClmcYJZDVty5QWqT-zuJV6Q"><i class="fa fa-youtube-play"></i></a>
 			</li>
 			<li class="social-footer-icon podcast">
 				<a href="https://www.ivoox.com/escuchar-bigotes_nq_484298_1.html"><i class="fa fa-podcast"></i></a>
