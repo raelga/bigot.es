@@ -157,6 +157,31 @@ li.home-icon.front_page_on:before {
   box-shadow: 0 4px 8px 0 rgba(3, 1, 1, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.postauthor-social {
+  overflow: auto;
+  margin-top: 20px;
+}
+
+.postauthor-social ul {
+  list-style: none;
+  font-size: 1.25em;
+  padding-inline-start: 0px;
+}
+
+.postauthor-social ul li {
+  float: left;
+  padding-left: 15px;
+  border-bottom: none;
+}
+
+.postauthor-social a[href*="twitter.com"] {
+  color: #00aced;
+}
+
+.postauthor-container {
+  margin-bottom: 30px;
+}
+
 /* Top Social Bar */
 
 .social-nav a[href*="youtube.com"]:after {
