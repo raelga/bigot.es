@@ -183,7 +183,7 @@ li.home-icon.front_page_on:before {
 @media (min-width: 768px) {
     .social-nav a {
         font-size: 1.5em;
-        min-width: 20px !important;
+        min-width: 25px !important;
         padding-left: 12.5px !important;
         padding-right: 12.5px !important;
     }
@@ -208,6 +208,60 @@ li.home-icon.front_page_on:before {
         -webkit-transition: all 0.5s ease-in-out;
         -o-transition: all 0.5s ease-in-out;
     }
+
+    .navbar a[href*="youtube.com"]:hover {
+      color: #fff;
+      background-color: #bb0000;
+    }
+    .navbar a[href*="facebook.com"]:hover {
+      color: #fff;
+      background-color: #3b5998;
+    }
+    .navbar a[href*="instagram.com"]:hover {
+      color: #fff;
+      background-color: #517fa4; 
+    }
+    .navbar a[href*="twitter.com"]:hover {
+      color: #fff;
+      background-color: #00aced;
+    }
+    .navbar a[href*="t.me"]:hover {
+      color: #fff;
+      background-color: #0088CC;
+    }
+
+    .navbar a[href*="youtube.com"]:hover:after {
+      color: #fff;
+    }
+    .navbar a[href*="facebook.com"]:hover:after {
+      color: #fff;
+    }
+    .navbar a[href*="instagram.com"]:hover:after {
+      color: #fff;
+    }
+    .navbar a[href*="twitter.com"]:hover:after {
+      color: #fff;
+    }
+    .navbar a[href*="t.me"]:hover:after {
+      color: #fff;
+    }
+
+    .navbar a[href*="youtube.com"]:after {
+      color: #777;
+    }
+    .navbar a[href*="facebook.com"]:after {
+      color: #777;
+    }
+    .navbar a[href*="instagram.com"]:after {
+      color: #777;
+    }
+    .navbar a[href*="twitter.com"]:after {
+      color: #777;
+    }
+    .navbar a[href*="t.me"]:after {
+      color: #777;
+    }
+
 }
 
 .footer-social-icons {
