@@ -104,3 +104,31 @@ register_sidebar(
 		'after_title'	 => '</h3></div>',
 	)
 );
+
+function user_contact_add_twitter( $user_contact ) {
+	$user_contact['twitter'] = __( 'Twitter' );
+
+	return $user_contact;
+}
+add_filter( 'user_contactmethods', 'user_contact_add_twitter' );
+
+function user_contact_add_psn( $user_contact ) {
+	$user_contact['psn'] = __( 'PlayStation Network' );
+
+	return $user_contact;
+}
+add_filter( 'user_contactmethods', 'user_contact_add_psn' );
+
+function user_contact_add_xbox( $user_contact ) {
+	$user_contact['xbox'] = __( 'Xbox Live' );
+
+	return $user_contact;
+}
+add_filter( 'user_contactmethods', 'user_contact_add_xbox' );
+
+function user_contact_add_nintendo( $user_contact ) {
+	$user_contact['nintendo'] = __( 'Nintendo' );
+
+	return $user_contact;
+}
+add_filter( 'user_contactmethods', 'user_contact_add_nintendo' );
