@@ -60,7 +60,7 @@ function envo_magazine_generate_construct_footer() {
 		?>
 		<span class="sep"> | </span>
 		<?php 
-		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/">Contacto</a>' );
+		printf( esc_html__( '%s' ), '<a href="mailto:contacto@bigot.es">Contacto</a>' );
 		?>
 	</div>
 	<div class="footer-social-icons text-center">	
