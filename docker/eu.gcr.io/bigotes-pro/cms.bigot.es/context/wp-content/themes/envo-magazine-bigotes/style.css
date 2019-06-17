@@ -131,6 +131,32 @@ li.home-icon.front_page_on:before {
     display: block;
 }
 
+@media (min-width: 1200px) {
+  .postauthor-avatar {
+    position: relative;
+    float: right;
+    padding-right: 10px;
+    margin-bottom: -75px;
+    top: -80px;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 1200px) {
+  .postauthor-avatar {
+    position: relative;
+    float: right;
+    padding-right: 20px;
+    z-index: 10;
+  }
+}
+
+.postauthor-avatar img {
+  border: 2px solid #777;
+  border-radius: 66px;
+  box-shadow: 0 4px 8px 0 rgba(3, 1, 1, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 /* Top Social Bar */
 
 .social-nav a[href*="youtube.com"]:after {

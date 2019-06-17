@@ -9,13 +9,18 @@
 					<h3 class="about">
 						<?php esc_html_e( 'Sobre ', 'envo-magazine' ); ?>
 						<?php the_author_posts_link(); ?>
-					</h3>			
+					</h3>
+        </div>
 				</div>        	
-				<div class="postauthor-content">	             						           
+        </div>
+        <div class="postauthor-avatar"> 
+          <?php echo get_avatar( get_the_author_meta( 'ID' ), 128 ); ?>
+        </div>
+				<div class="postauthor-content"> 
 					<p>
 						<?php the_author_meta( 'description' ) ?>
-					</p>					
-				</div>	 		
+					</p>
+				</div>
 			</div>
 
 		<?php } ?>
