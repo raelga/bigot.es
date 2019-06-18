@@ -60,7 +60,7 @@ function envo_magazine_generate_construct_footer() {
 		?>
 		<span class="sep"> | </span>
 		<?php 
-		printf( esc_html__( '%s' ), '<a href="mailto:contacto@bigot.es">Contacto</a>' );
+		printf( esc_html__( '%s' ), '<a href="mailto:contacto@bigot.es" target="_blank">Contacto</a>' );
 		?>
 	</div>
 	<div class="footer-social-icons text-center">	
@@ -106,7 +106,7 @@ register_sidebar(
 );
 
 function user_contact_add_twitter( $user_contact ) {
-	$user_contact['twitter'] = __( 'Twitter' );
+	$user_contact['twitter'] = __( 'Twitter Username' );
 
 	return $user_contact;
 }

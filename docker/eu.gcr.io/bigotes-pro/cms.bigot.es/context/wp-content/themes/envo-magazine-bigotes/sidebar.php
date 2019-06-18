@@ -36,7 +36,7 @@
             if (!empty($author_twitter)) {
               ?>
               <li class="postauthor-social twitter">
-                <a href="<?php echo esc_url("https//twitter.com/$author_twitter") ?>">
+                <a href="<?php echo esc_url("https://twitter.com/$author_twitter") ?>" target="_blank">
                   <i class="fa fa-twitter"></i> <?php echo esc_html__("$author_twitter") ?>
                 </a>
               </li>
