@@ -48,15 +48,15 @@ function envo_magazine_generate_construct_footer() {
 	?>
 	<div class="footer-legal-note text-center">
 		<?php 
-		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/">Condiciones de uso</a>' );
+		printf( esc_html__( '%s' ), '<a href="/condiciones-generales-de-uso">Condiciones de uso</a>' );
 		?>
 		<span class="sep"> | </span>
 		<?php 
-		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/politica-de-cookies/">Política de cookies</a>' );
+		printf( esc_html__( '%s' ), '<a href="/politica-de-cookies">Política de cookies</a>' );
 		?>
 		<span class="sep"> | </span>
 		<?php 
-		printf( esc_html__( '%s' ), '<a href="https://cms.bigot.es/">Redacción</a>' );
+		printf( esc_html__( '%s' ), '<a href="/">Redacción</a>' );
 		?>
 		<span class="sep"> | </span>
 		<?php 
@@ -88,7 +88,7 @@ function envo_magazine_generate_construct_footer() {
 	</div>
 	<div class="footer-credits-text text-center">
 		<?php 
-		printf( esc_html__( '%s %s' ), date("Y"), '<a href="https://cms.bigot.es/">bigot.es</a>' );
+		printf( esc_html__( '%s %s' ), date("Y"), '<a href="/">bigot.es</a>' );
 		?>
 	</div>
 	<?php
