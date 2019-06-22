@@ -325,18 +325,24 @@ li.home-icon.front_page_on:before {
     list-style-type: none;
 }
 
+@media (min-width: 768px) {
+  .footer-social-bar a {
+      padding: 20px;
+      font-size: 3em;
+  }
+}
+
 @media (max-width: 768px) {
+
     .footer-social-bar > li {
         min-width: 50px;
         line-height: 75px;
         padding: 0px;
     }
-}
-
-.footer-social-bar a {
-    padding: 20px !important;
-    font-size: 3em;
-    line-height: 50px;
+    .footer-social-bar a {
+      padding: 2vw;
+      font-size: 8vw;
+    }
 }
 
 .footer-legal-note {
