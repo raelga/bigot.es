@@ -315,6 +315,10 @@ li.home-icon.front_page_on:before {
 
 }
 
+.footer-legal-note a {
+  padding: 25px;
+}
+
 .footer-social-icons {
     padding: 25px;
     padding-inline-start: 0px;
