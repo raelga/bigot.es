@@ -1,9 +1,9 @@
 </div><!-- end main-container -->
 </div><!-- end page-area -->
-<?php if ( is_active_sidebar( 'envo-magazine-footer-area' ) ) { ?>  				
+<?php if ( is_active_sidebar( 'bigotes-footer' ) ) { ?>  				
 	<div id="content-footer-section" class="container-fluid clearfix">
 		<div class="container">
-			<?php dynamic_sidebar( 'envo-magazine-footer-area' ) ?>
+			<?php dynamic_sidebar( 'bigotes-footer' ) ?>
 		</div>	
 	</div>		
 <?php } ?>
