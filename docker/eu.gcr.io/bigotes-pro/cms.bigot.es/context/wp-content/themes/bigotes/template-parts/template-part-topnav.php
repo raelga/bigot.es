@@ -110,7 +110,25 @@
 					'walker'			 => new wp_bootstrap_navwalker(),
 				) );
 			?>
-			<ul class="nav navbar-nav search-icon navbar-right hidden-xs">
+			<!-- The social media icon bar -->
+			<ul class="nav social-nav navbar-right">
+				<li itemscope="itemscope" class="menu-item facebook">
+					<a href="https://www.facebook.com/somosbigotes"></a>
+				</li>
+				<li itemscope="itemscope" class="menu-item twitter">
+					<a href="https://twitter.com/somosbigotes"></a>
+				</li>
+				<li itemscope="itemscope" class="menu-item instagram">
+					<a href="https://www.instagram.com/bigot.es"></a>
+				</li>
+				<li itemscope="itemscope" class="menu-item youtube">
+					<a href="https://www.youtube.com/channel/UClmcYJZDVty5QWqT-zuJV6Q"></a>
+				</li>
+				<li itemscope="itemscope" class="menu-item telegram">
+					<a href="https://t.me/BigotesTelegram"></a>
+				</li>
+			</ul>
+			<!-- <ul class="nav navbar-nav search-icon navbar-right hidden-xs">
 				<li class="top-search-icon">
 					<a href="#">
 						<i class="fa fa-search"></i>
@@ -119,7 +137,7 @@
 				<div class="top-search-box">
 					<?php get_search_form(); ?>
 				</div>
-			</ul>
+			</ul> -->
 		</div>
 		<?php do_action( 'envo_magazine_menu' ); ?>
 	</nav> 
