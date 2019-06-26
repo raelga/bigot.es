@@ -1,3 +1,4 @@
+<?php include('functions-bigotes.php'); ?>
 <?php
 add_action( 'after_setup_theme', 'envo_magazine_setup' );
 
@@ -217,6 +218,7 @@ add_action( 'wp_enqueue_scripts', 'envo_magazine_theme_stylesheets' );
 function envo_magazine_theme_js() {
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '3.3.7', true );
 	wp_enqueue_script( 'envo-magazine-theme-js', get_template_directory_uri() . '/js/customscript.js', array( 'jquery' ), '1.3.4', true );
+	wp_enqueue_script( 'commentbox', get_template_directory_uri() . '/js/commentbox.min.js', array( 'comments' ), '2.0.0', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'envo_magazine_theme_js' );
