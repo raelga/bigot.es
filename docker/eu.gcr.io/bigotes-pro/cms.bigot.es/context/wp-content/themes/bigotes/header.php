@@ -14,6 +14,14 @@
 
 		gtag('config', 'UA-129735875-1');
 		</script>
+		<!-- Google AdSense -->
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-6758041426106533",
+			enable_page_level_ads: true
+		});
+		</script>
 		<?php wp_head(); ?>
 	</head>
 	<body id="blog" <?php body_class(); ?>>
