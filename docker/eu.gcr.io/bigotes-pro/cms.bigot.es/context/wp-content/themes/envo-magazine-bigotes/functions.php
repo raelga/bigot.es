@@ -50,15 +50,12 @@ function envo_magazine_generate_construct_footer() {
 		<?php 
 		printf( esc_html__( '%s' ), '<a href="/condiciones-generales-de-uso">Condiciones de uso</a>' );
 		?>
-		<span class="sep"> | </span>
 		<?php 
 		printf( esc_html__( '%s' ), '<a href="/politica-de-cookies">Política de cookies</a>' );
 		?>
-		<span class="sep"> | </span>
 		<?php 
 		printf( esc_html__( '%s' ), '<a href="/">Redacción</a>' );
 		?>
-		<span class="sep"> | </span>
 		<?php 
 		printf( esc_html__( '%s' ), '<a href="mailto:contacto@bigot.es" target="_blank">Contacto</a>' );
 		?>
