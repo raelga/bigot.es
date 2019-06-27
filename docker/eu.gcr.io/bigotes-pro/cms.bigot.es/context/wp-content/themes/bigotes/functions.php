@@ -207,7 +207,7 @@ function envo_magazine_theme_stylesheets() {
 	// Theme stylesheet.
 	wp_enqueue_style( 'envo-magazine-stylesheet', get_stylesheet_uri(), array('bootstrap'), '1.3.4'  );
 	// Load Font Awesome css.
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css', array(), '4.7.0' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), '4.7.0' );
 }
 
 add_action( 'wp_enqueue_scripts', 'envo_magazine_theme_stylesheets' );

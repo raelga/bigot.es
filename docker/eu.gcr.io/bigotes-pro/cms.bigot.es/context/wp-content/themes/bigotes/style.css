@@ -891,6 +891,7 @@ li.home-icon.front_page_on a, li.home-icon.front_page_on a:hover {
     color: #fff;
 }
 li.home-icon a {
+    font-family: "Font Awesome 5 Free";
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -1205,13 +1206,13 @@ span.comments-meta i {
 }
 
 /* Menu social links */
-.navbar a[href*="vk.com"], .navbar a[href*="dribbble.com"], .navbar a[href*="facebook.com"], .navbar a[href*="flickr.com"], .navbar a[href*="foursquare.com"], .navbar a[href*="plus.google.com"], .navbar a[href*="instagram.com"], .navbar a[href*="linkedin.com"], .navbar a[href*="pinterest.com"], .navbar a[href*="reddit.com"], .navbar a[href*="tumblr.com"], .navbar a[href*="twitter.com"], .navbar a[href*="vimeo.com"], .navbar a[href*="wordpress.com"], .navbar a[href*="wordpress.org"], .navbar a[href*="youtube.com"], .navbar a[href*="mailto:"], .navbar a[href*="twitch.tv"], .navbar a[href$="/feed/"] {
+.navbar a[href*="vk.com"], .navbar a[href*="dribbble.com"], .navbar a[href*="facebook.com"], .navbar a[href*="flickr.com"], .navbar a[href*="foursquare.com"], .navbar a[href*="plus.google.com"], .navbar a[href*="instagram.com"], .navbar a[href*="linkedin.com"], .navbar a[href*="pinterest.com"], .navbar a[href*="reddit.com"], .navbar a[href*="tumblr.com"], .navbar a[href*="twitter.com"], .navbar a[href*="vimeo.com"], .navbar a[href*="wordpress.com"], .navbar a[href*="wordpress.org"], .navbar a[href*="youtube.com"], .navbar a[href*="mailto:"], .navbar a[href*="twitch.tv"], .navbar a[href*="t.me"], .navbar a[href$="/feed/"] {
     text-indent: -9999px;
     white-space: normal;
     min-width: 50px;
 }
-.navbar a[href*="vk.com"]:after, .navbar a[href*="dribbble.com"]:after, .navbar a[href*="facebook.com"]:after, .navbar a[href*="flickr.com"]:after, .navbar a[href*="foursquare.com"]:after, .navbar a[href*="plus.google.com"]:after, .navbar a[href*="instagram.com"]:after, .navbar a[href*="linkedin.com"]:after, .navbar a[href*="pinterest.com"]:after, .navbar a[href*="reddit.com"]:after, .navbar a[href*="tumblr.com"]:after, .navbar a[href*="twitter.com"]:after, .navbar a[href*="vimeo.com"]:after, .navbar a[href*="wordpress.com"]:after, .navbar a[href*="wordpress.org"]:after, .navbar a[href*="youtube.com"]:after, .navbar a[href*="mailto:"]:after, .navbar a[href*="twitch.tv"]:after, .navbar a[href$="/feed/"]:after {
-    font-family: "FontAwesome";
+.navbar a[href*="vk.com"]:after, .navbar a[href*="dribbble.com"]:after, .navbar a[href*="facebook.com"]:after, .navbar a[href*="flickr.com"]:after, .navbar a[href*="foursquare.com"]:after, .navbar a[href*="plus.google.com"]:after, .navbar a[href*="instagram.com"]:after, .navbar a[href*="linkedin.com"]:after, .navbar a[href*="pinterest.com"]:after, .navbar a[href*="reddit.com"]:after, .navbar a[href*="tumblr.com"]:after, .navbar a[href*="twitter.com"]:after, .navbar a[href*="vimeo.com"]:after, .navbar a[href*="wordpress.com"]:after, .navbar a[href*="wordpress.org"]:after, .navbar a[href*="youtube.com"]:after, .navbar a[href*="mailto:"]:after, .navbar a[href*="twitch.tv"]:after, .navbar a[href*="t.me"]:after, .navbar a[href$="/feed/"]:after {
+    font-family: "Font Awesome 5 Brands";
     text-indent: 0;
     display: block;
     float: left; 
@@ -1534,7 +1535,7 @@ li.home-icon.front_page_on:before {
 /* Top Social Bar */
 
 .social-nav a[href*="youtube.com"]:after {
-    content: "\f16a";
+    content: "\f167";
 }
 
 .social-nav a[href*="t.me"] {
@@ -1543,7 +1544,6 @@ li.home-icon.front_page_on:before {
 }
 
 .social-nav a[href*="t.me"]:after {
-    font-family: "FontAwesome";
     text-indent: 0;
     display: block;
     float: left; 
