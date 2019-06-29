@@ -3,7 +3,7 @@
 	<article class="col-md-12">
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>                         
 				<div <?php post_class(); ?>>
-					<?php envo_magazine_thumb_img( 'envo-magazine-single', '', false, true ); ?>
+					<?php bigotes_thumb_img( 'envo-magazine-single', '', false, true ); ?>
 					<?php the_title( '<h1 class="single-title">', '</h1>' ); ?>
 					<?php bigotes_author_meta(); ?>
 

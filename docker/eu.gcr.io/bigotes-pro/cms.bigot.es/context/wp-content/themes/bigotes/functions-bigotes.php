@@ -127,3 +127,21 @@ function user_contact_add_nintendo( $user_contact ) {
 	return $user_contact;
 }
 add_filter( 'user_contactmethods', 'user_contact_add_nintendo' );
+
+/**
+ * Returns widget thumbnail.
+ */
+function bigotes_thumb_img( $img = 'full', $col = '', $link = true, $single = false ) {
+	if ( ( has_post_thumbnail() && $link == true ) ) { ?>
+		<div class="news-thumb <?php echo esc_attr( $col ); ?>">
+			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+				<img src="<?php the_post_thumbnail_url( $img ); ?>" title="<?php the_title_attribute(); ?>" alt="<?php the_title_attribute(); ?>" />
+			</a>
+		</div><!-- .news-thumb -->
+	<?php } elseif ( has_post_thumbnail() ) { ?>
+		<div class="news-thumb <?php echo esc_attr( $col ); ?>">
+			<img src="<?php the_post_thumbnail_url( $img ); ?>" title="<?php the_title_attribute(); ?>" alt="<?php the_title_attribute(); ?>" />
+		</div><!-- .news-thumb -->	
+	<?php
+	}
+}
