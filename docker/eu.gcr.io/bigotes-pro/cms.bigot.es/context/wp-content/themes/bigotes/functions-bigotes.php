@@ -11,54 +11,58 @@
 // 	wp_enqueue_style( 'envo-magazine-child-style', get_stylesheet_uri(), array( 'envo-magazine-stylesheet' ) );
 // }
 
-function the_archive_title_name( $before = '', $after = '' ) {
-    $title = get_the_archive_title();
+function the_archive_title_name($before = '', $after = '')
+{
+	$title = get_the_archive_title();
 
-    if ( ! empty( $title ) ) {
-      echo $before . trim(strstr($title, ' ')) . $after;
-    }
+	if (!empty($title)) {
+		echo $before . trim(strstr($title, ' ')) . $after;
+	}
 }
 
-function envo_magazine_widget_date_comments( ) {
+function envo_magazine_widget_date_comments()
+{
 	?>
 	<span class="posted-date">
-		<?php echo esc_html( get_the_date() ); ?>
+		<?php echo esc_html(get_the_date()); ?>
 	</span>
-	<?php
+<?php
 }
 
-function bigotes_author_meta( ) {
-?>
+function bigotes_author_meta()
+{
+	?>
 	<div class="author-meta">
-		<span class="author-meta-by"><?php esc_html_e( 'Por', 'envo-magazine' ); ?></span>
-		<a class="author-meta-name" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) ) ); ?>">
+		<span class="author-meta-by"><?php esc_html_e('Por', 'envo-magazine'); ?></span>
+		<a class="author-meta-name" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'), get_the_author_meta('user_nicename'))); ?>">
 			<?php the_author(); ?>
 		</a>
-		<span class="author-meta-by"><?php esc_html_e( 'el', 'envo-magazine' ); ?></span>
-		<span class="author-meta-date"><?php echo esc_html( get_the_date() ); ?></span>
+		<span class="author-meta-by"><?php esc_html_e('el', 'envo-magazine'); ?></span>
+		<span class="author-meta-date"><?php echo esc_html(get_the_date()); ?></span>
 	</div>
-<?php	
+<?php
 }
 
-add_action( 'envo_magazine_generate_footer', 'envo_magazine_generate_construct_footer' );
+add_action('envo_magazine_generate_footer', 'envo_magazine_generate_construct_footer');
 
-function envo_magazine_generate_construct_footer() {
+function envo_magazine_generate_construct_footer()
+{
 	?>
 	<div class="footer-legal-note text-center">
-		<?php 
-		printf( esc_html__( '%s' ), '<a href="/condiciones-generales-de-uso">Condiciones de uso</a>' );
+		<?php
+		printf(esc_html__('%s'), '<a href="/condiciones-generales-de-uso">Condiciones de uso</a>');
 		?>
-		<?php 
-		printf( esc_html__( '%s' ), '<a href="/politica-de-cookies">Política de cookies</a>' );
+		<?php
+		printf(esc_html__('%s'), '<a href="/politica-de-cookies">Política de cookies</a>');
 		?>
-		<?php 
-		printf( esc_html__( '%s' ), '<a href="/">Redacción</a>' );
+		<?php
+		printf(esc_html__('%s'), '<a href="/">Redacción</a>');
 		?>
-		<?php 
-		printf( esc_html__( '%s' ), '<a href="mailto:contacto@bigot.es" target="_blank">Contacto</a>' );
+		<?php
+		printf(esc_html__('%s'), '<a href="mailto:contacto@bigot.es" target="_blank">Contacto</a>');
 		?>
 	</div>
-	<div class="footer-social-icons text-center">	
+	<div class="footer-social-icons text-center">
 		<!-- The social media icon bar -->
 		<ul class="footer-social-bar">
 			<li class="social-footer-icon facebook">
@@ -82,16 +86,16 @@ function envo_magazine_generate_construct_footer() {
 		</ul>
 	</div>
 	<div class="footer-credits-text text-center">
-		<?php 
-		printf( esc_html__( '%s %s %s' ), 'Copyright', date("Y"), '<a href="/">bigot.es</a>' );
+		<?php
+		printf(esc_html__('%s %s %s'), 'Copyright', date("Y"), '<a href="/">bigot.es</a>');
 		?>
 	</div>
-	<?php
+<?php
 }
 
 register_sidebar(
 	array(
-		'name'			 => esc_html__( 'bigot.es Footer' ),
+		'name'			 => esc_html__('bigot.es Footer'),
 		'id'			 => 'bigotes-footer',
 		'before_widget'	 => '<div id="%1$s" class="widget %2$s col-md-12">',
 		'after_widget'	 => '</div>',
@@ -100,48 +104,55 @@ register_sidebar(
 	)
 );
 
-function user_contact_add_twitter( $user_contact ) {
-	$user_contact['twitter'] = __( 'Twitter Username' );
+function user_contact_add_twitter($user_contact)
+{
+	$user_contact['twitter'] = __('Twitter Username');
 
 	return $user_contact;
 }
-add_filter( 'user_contactmethods', 'user_contact_add_twitter' );
+add_filter('user_contactmethods', 'user_contact_add_twitter');
 
-function user_contact_add_psn( $user_contact ) {
-	$user_contact['psn'] = __( 'PlayStation Network' );
-
-	return $user_contact;
-}
-add_filter( 'user_contactmethods', 'user_contact_add_psn' );
-
-function user_contact_add_xbox( $user_contact ) {
-	$user_contact['xbox'] = __( 'Xbox Live' );
+function user_contact_add_psn($user_contact)
+{
+	$user_contact['psn'] = __('PlayStation Network');
 
 	return $user_contact;
 }
-add_filter( 'user_contactmethods', 'user_contact_add_xbox' );
+add_filter('user_contactmethods', 'user_contact_add_psn');
 
-function user_contact_add_nintendo( $user_contact ) {
-	$user_contact['nintendo'] = __( 'Nintendo' );
+function user_contact_add_xbox($user_contact)
+{
+	$user_contact['xbox'] = __('Xbox Live');
 
 	return $user_contact;
 }
-add_filter( 'user_contactmethods', 'user_contact_add_nintendo' );
+add_filter('user_contactmethods', 'user_contact_add_xbox');
+
+function user_contact_add_nintendo($user_contact)
+{
+	$user_contact['nintendo'] = __('Nintendo');
+
+	return $user_contact;
+}
+add_filter('user_contactmethods', 'user_contact_add_nintendo');
 
 /**
  * Returns widget thumbnail.
  */
-function bigotes_thumb_img( $img = 'full', $col = '', $link = true, $single = false ) {
-	if ( ( has_post_thumbnail() && $link == true ) ) { ?>
-		<div class="news-thumb <?php echo esc_attr( $col ); ?>">
+function bigotes_thumb_img($img = 'full', $col = '', $link = true, $single = false)
+{
+	if ((has_post_thumbnail() && $link == true)) { ?>
+		<div class="news-thumb <?php echo esc_attr($col); ?>">
 			<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-				<img src="<?php the_post_thumbnail_url( $img ); ?>" title="<?php the_title_attribute(); ?>" alt="<?php the_title_attribute(); ?>" />
+				<img src="<?php the_post_thumbnail_url($img); ?>" title="<?php the_title_attribute(); ?>" alt="<?php the_title_attribute(); ?>" />
 			</a>
 		</div><!-- .news-thumb -->
-	<?php } elseif ( has_post_thumbnail() ) { ?>
-		<div class="news-thumb <?php echo esc_attr( $col ); ?>">
-			<img src="<?php the_post_thumbnail_url( $img ); ?>" title="<?php the_title_attribute(); ?>" alt="<?php the_title_attribute(); ?>" />
-		</div><!-- .news-thumb -->	
+	<?php } elseif (has_post_thumbnail()) { ?>
+		<div class="news-thumb <?php echo esc_attr($col); ?>">
+			<img src="<?php the_post_thumbnail_url($img); ?>" title="<?php the_title_attribute(); ?>" alt="<?php the_title_attribute(); ?>" />
+		</div><!-- .news-thumb -->
+	<?php }
+}
 
 /**
  * Returns meta for the summary card.
@@ -152,19 +163,19 @@ function bigotes_summary_card()
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@somosbigotes" />
 	<meta property="og:url" content="<?php the_permalink(); ?>" />
-	<?php # Get author information, failback to @somosbigotes ?>
+	<!-- Get author information, failback to @somosbigotes -->
 	<?php if (!empty(get_the_author_meta('twitter'))) { ?>
 		<meta name="twitter:creator" content="<?php get_the_author_meta('twitter'); ?>" />
 	<?php } else { ?>
 		<meta property="og:title" content="bigot.es" />
 	<?php } ?>
-	<?php # Get post excerpt information, failback to bigot.es short presentation ?>
-	<?php if ( has_excerpt() ) { ?>
+	<!-- Get post excerpt information, failback to bigot.es short presentation -->
+	<?php if (has_excerpt()) { ?>
 		<meta property="og:description" content="<?php echo get_the_excerpt(); ?>" />
 	<?php } else { ?>
 		<meta property="og:description" content="Bigot.es es una web especializada en el entretenimiento multimedia e interactivo. Nuestros objetivos se cimientan en el interés continuo por el medio cultural de los videojuegos en habla hispana." />
 	<?php } ?>
-	<?php # Get post image, failback to bigot.es custom logo if available ?>
+	<!-- Get post image, failback to bigot.es custom logo if available -->
 	<?php if (has_post_thumbnail()) { ?>
 		<meta property="og:image" content="<?php the_post_thumbnail_url('full'); ?>" />
 	<?php } elseif (has_custom_logo()) {
@@ -173,5 +184,5 @@ function bigotes_summary_card()
 	?>
 		<meta property="og:image" content="<?php echo $custom_logo_url[0] ?>" />
 	<?php } ?>
-	<?php
-	}
+<?php
+}
