@@ -37,7 +37,7 @@
               ?>
               <li class="postauthor-social twitter">
                 <a href="<?php echo esc_url("https://twitter.com/$author_twitter") ?>" target="_blank">
-                  <i class="fa fa-twitter"></i> <?php echo esc_html__("$author_twitter") ?>
+                  <i class="fab fa-twitter"></i> <?php echo esc_html__("$author_twitter") ?>
                 </a>
               </li>
             <?php } ?>
