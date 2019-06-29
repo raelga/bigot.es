@@ -23,6 +23,7 @@
 		});
 		</script>
 		<?php wp_head(); ?>
+		<?php bigotes_summary_card(); ?>
 	</head>
 	<body id="blog" <?php body_class(); ?>>
 		<?php get_template_part( 'template-parts/template-part', 'topnav' ); ?>

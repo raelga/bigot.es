@@ -142,6 +142,36 @@ function bigotes_thumb_img( $img = 'full', $col = '', $link = true, $single = fa
 		<div class="news-thumb <?php echo esc_attr( $col ); ?>">
 			<img src="<?php the_post_thumbnail_url( $img ); ?>" title="<?php the_title_attribute(); ?>" alt="<?php the_title_attribute(); ?>" />
 		</div><!-- .news-thumb -->	
+
+/**
+ * Returns meta for the summary card.
+ */
+function bigotes_summary_card()
+{
+	?>
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@somosbigotes" />
+	<meta property="og:url" content="<?php the_permalink(); ?>" />
+	<?php # Get author information, failback to @somosbigotes ?>
+	<?php if (!empty(get_the_author_meta('twitter'))) { ?>
+		<meta name="twitter:creator" content="<?php get_the_author_meta('twitter'); ?>" />
+	<?php } else { ?>
+		<meta property="og:title" content="bigot.es" />
+	<?php } ?>
+	<?php # Get post excerpt information, failback to bigot.es short presentation ?>
+	<?php if ( has_excerpt() ) { ?>
+		<meta property="og:description" content="<?php echo get_the_excerpt(); ?>" />
+	<?php } else { ?>
+		<meta property="og:description" content="Bigot.es es una web especializada en el entretenimiento multimedia e interactivo. Nuestros objetivos se cimientan en el interés continuo por el medio cultural de los videojuegos en habla hispana." />
+	<?php } ?>
+	<?php # Get post image, failback to bigot.es custom logo if available ?>
+	<?php if (has_post_thumbnail()) { ?>
+		<meta property="og:image" content="<?php the_post_thumbnail_url('full'); ?>" />
+	<?php } elseif (has_custom_logo()) {
+	$custom_logo_id = get_theme_mod('custom_logo');
+	$custom_logo_url = wp_get_attachment_image_src($custom_logo_id, 'full');
+	?>
+		<meta property="og:image" content="<?php echo $custom_logo_url[0] ?>" />
+	<?php } ?>
 	<?php
 	}
-}
