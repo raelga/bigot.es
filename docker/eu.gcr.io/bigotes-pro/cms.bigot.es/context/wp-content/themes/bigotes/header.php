@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
+
 	<head>
 		<meta http-equiv="content-type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,11 +15,10 @@
 
 		gtag('config', 'UA-129735875-1');
 		</script>
-		<!-- Google AdSense -->
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<script>
 		(adsbygoogle = window.adsbygoogle || []).push({
-			google_ad_client: "ca-pub-6758041426106533",
+			google_ad_client: "ca-pub-7522671868853833",
 			enable_page_level_ads: true
 		});
 		</script>
