@@ -163,11 +163,17 @@ function bigotes_summary_card()
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@somosbigotes" />
 	<meta property="og:url" content="<?php the_permalink(); ?>" />
+	<!-- Get post title, failback to welcome message -->
+	<?php if (!empty(get_the_title())) { ?>
+		<meta property="og:title" content="<?php the_title(); ?>" />
+	<?php } else { ?>
+		<meta property="og:title" content="Bienvenidos a bigot.es" />
+	<?php } ?>
 	<!-- Get author information, failback to @somosbigotes -->
 	<?php if (!empty(get_the_author_meta('twitter'))) { ?>
 		<meta name="twitter:creator" content="<?php get_the_author_meta('twitter'); ?>" />
 	<?php } else { ?>
-		<meta property="og:title" content="bigot.es" />
+		<meta name="twitter:creator" content="@somosbigotes" />
 	<?php } ?>
 	<!-- Get post excerpt information, failback to bigot.es short presentation -->
 	<?php if (has_excerpt()) { ?>
