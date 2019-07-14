@@ -1,0 +1,11 @@
+namespace: bigotes
+
+commonLabels:
+  app: cms
+
+resources:
+- cms-deployment.yaml
+- cms-service.yaml
+- cms-ingress.yaml
+- sensible/cms-db-credentials.yaml
+- sensible/cms-http-auth.yaml
