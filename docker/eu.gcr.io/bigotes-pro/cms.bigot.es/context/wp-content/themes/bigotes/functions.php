@@ -55,18 +55,13 @@ if ( !function_exists( 'envo_magazine_setup' ) ) :
 			'height'                 => 200,
 			'wp-head-callback'       => 'envo_magazine_header_style',
 		) ) );
-		
-		// WooCommerce support.
-		add_theme_support( 'woocommerce' );
-		add_theme_support( 'wc-product-gallery-zoom' );
-  		add_theme_support( 'wc-product-gallery-lightbox' );
-  		add_theme_support( 'wc-product-gallery-slider' );
-		
+
 		/*
 		* This theme styles the visual editor to resemble the theme style,
 		* specifically font, colors, icons, and column width.
 		*/
-	   add_editor_style( array( 'css/bootstrap.css', envo_magazine_fonts_url(), 'css/editor-style.css' ) );
+/*	   add_editor_style( array( 'css/bootstrap.css', envo_magazine_fonts_url(), 'css/editor-style.css' ) ); */
+		add_editor_style( array( 'css/bootstrap.css', 'css/editor-style.css' ) );
 	}
 
 endif;
@@ -169,40 +164,11 @@ function envo_magazine_content_width() {
 add_action( 'template_redirect', 'envo_magazine_content_width', 0 );
 
 /**
- * Register custom fonts.
- */
-function envo_magazine_fonts_url() {
-	$fonts_url = '';
-
-	/**
-	 * Translators: If there are characters in your language that are not
-	 * supported by Roboto Condensed, translate this to 'off'. Do not translate
-	 * into your own language.
-	 */
-	$roboto_condensed = _x( 'on', 'Roboto Condensed font: on or off', 'envo-magazine' );
-
-	if ( 'off' !== $roboto_condensed ) {
-		$font_families = array();
-
-		$font_families[] = 'Roboto Condensed:300,400,700';
-
-		$query_args = array(
-			'family' => urlencode( implode( '|', $font_families ) ),
-			'subset' => urlencode( 'latin,latin-ext' ),
-		);
-
-		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-	}
-
-	return esc_url_raw( $fonts_url );
-}
-
-/**
  * Enqueue Styles (normal style.css and bootstrap.css)
  */
 function envo_magazine_theme_stylesheets() {
 	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'envo-magazine-fonts', envo_magazine_fonts_url(), array(), null );
+/*	wp_enqueue_style( 'envo-magazine-fonts', envo_magazine_fonts_url(), array(), null ); */
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.css', array(), '3.3.7' );
 	// Theme stylesheet.
 	wp_enqueue_style( 'envo-magazine-stylesheet', get_stylesheet_uri(), array('bootstrap'), '1.3.4'  );
