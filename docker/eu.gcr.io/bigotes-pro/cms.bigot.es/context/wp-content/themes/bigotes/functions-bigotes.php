@@ -34,7 +34,7 @@ function bigotes_author_meta()
 	?>
 	<div class="author-meta">
 		<span class="author-meta-by"><?php esc_html_e('Por', 'envo-magazine'); ?></span>
-		<a class="author-meta-name" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'), get_the_author_meta('user_nicename'))); ?>">
+		<a class="author-meta-name" href="<?php echo esc_url(get_author_posts_url(the_author_meta('ID'), the_author_meta('user_nicename'))); ?>">
 			<?php the_author(); ?>
 		</a>
 		<span class="author-meta-by"><?php esc_html_e('el', 'envo-magazine'); ?></span>
@@ -160,24 +160,32 @@ function bigotes_thumb_img($img = 'full', $col = '', $link = true, $single = fal
 function bigotes_summary_card()
 {
 	?>
+	<?php global $post; ?>
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@somosbigotes" />
+	<meta name="og:site_name" content="bigot.es" />
 	<meta property="og:url" content="<?php the_permalink(); ?>" />
 	<!-- Get post title, failback to welcome message -->
 	<?php if (!empty(get_the_title())) { ?>
-		<meta property="og:title" content="<?php the_title(); ?>" />
+		<meta property="og:title" content="<?php esc_html( the_title()); ?>" />
 	<?php } else { ?>
 		<meta property="og:title" content="Bienvenidos a bigot.es" />
 	<?php } ?>
+	<!-- Get post date -->
+	<?php if (!empty(get_the_date())) { ?>
+		<meta property="article:published_time" content="<?php echo $post->post_date; ?>" />
+	<?php } ?>
 	<!-- Get author information, failback to @somosbigotes -->
-	<?php if (!empty(get_the_author_meta('twitter'))) { ?>
-		<meta name="twitter:creator" content="<?php get_the_author_meta('twitter'); ?>" />
+	<?php if (!empty(get_the_author_meta('twitter', $post->post_author))) { ?>
+		<meta name="twitter:creator" content="<?php esc_html( the_author_meta('twitter', $post->post_author ) ); ?>" />
+		<meta name="article:author" content="<?php esc_html( the_author_meta('twitter', $post->post_author ) ); ?>" />
 	<?php } else { ?>
 		<meta name="twitter:creator" content="@somosbigotes" />
+		<meta name="article:author" content="@somosbigotes" />
 	<?php } ?>
 	<!-- Get post excerpt information, failback to bigot.es short presentation -->
 	<?php if (has_excerpt()) { ?>
-		<meta property="og:description" content="<?php echo get_the_excerpt(); ?>" />
+		<meta property="og:description" content="<?php echo esc_html( get_the_excerpt() ); ?>" />
 	<?php } else { ?>
 		<meta property="og:description" content="Bigot.es es una web especializada en el entretenimiento multimedia e interactivo. Nuestros objetivos se cimientan en el interés continuo por el medio cultural de los videojuegos en habla hispana." />
 	<?php } ?>
