@@ -161,7 +161,7 @@ function bigotes_summary_card()
 {
 	?>
 	<?php global $post; ?>
-	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@somosbigotes" />
 	<meta name="og:site_name" content="bigot.es" />
 	<meta property="og:url" content="<?php the_permalink(); ?>" />
