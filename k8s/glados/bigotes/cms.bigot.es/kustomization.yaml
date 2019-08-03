@@ -9,3 +9,4 @@ resources:
 - cms-ingress.yaml
 - sensible/cms-db-credentials.yaml
 - sensible/cms-http-auth.yaml
+- sensible/cms-config.yaml

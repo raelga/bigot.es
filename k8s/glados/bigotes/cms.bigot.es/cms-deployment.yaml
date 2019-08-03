@@ -13,11 +13,11 @@ spec:
   template:
     metadata:
       labels:
-        app: cms.bigot.es
+        app: cms
         tier: wordpress
     spec:
       containers:
-      - image: eu.gcr.io/bigotes-pro/cms.bigot.es:3c16daf
+      - image: eu.gcr.io/bigotes-pro/cms.bigot.es:85567fd
         name: wordpress
         ports:
         - containerPort: 80
@@ -43,3 +43,9 @@ spec:
             secretKeyRef:
               name: cms-db-credentials
               key: WORDPRESS_DB_PASSWORD
+        - name: WORDPRESS_CONFIG_EXTRA
+          valueFrom:
+            secretKeyRef:
+              name: cms-config
+              key: WORDPRESS_CONFIG_EXTRA
+
