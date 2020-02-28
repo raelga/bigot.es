@@ -28,7 +28,7 @@ RUN mkdir -p /tmp/wp-languages \
     && wget -q 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=po' -O /tmp/wp-languages/es_ES.po \
     && wget -q 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=mo' -O /tmp/wp-languages/es_ES.mo
 
-FROM wordpress:5.2 as wp
+FROM wordpress:5.3 as wp
 
 COPY --chown=www-data wp-content /var/www/html/wp-content
 COPY --from=wp-content --chown=www-data /tmp/wp-plugins /var/www/html/wp-content/plugins/
