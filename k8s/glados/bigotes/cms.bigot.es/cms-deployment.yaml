@@ -17,8 +17,15 @@ spec:
         tier: wordpress
     spec:
       containers:
-      - image: eu.gcr.io/bigotes-pro/cms.bigot.es:85567fd
+      - image: eu.gcr.io/bigotes-pro/cms.bigot.es:latest
         name: wordpress
+        resources:
+          requests:
+            cpu: 150m
+            memory: 128Mi
+          limits:
+            cpu: 150m
+            memory: 256Mi
         ports:
         - containerPort: 80
           name: wordpress
