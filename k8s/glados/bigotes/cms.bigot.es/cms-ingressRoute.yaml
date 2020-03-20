@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: cms
+spec:
+  entrypoints:
+    - https
+  tls: {}
+  routes:
+  - match: Host(`cms.bigot.es`)
+    kind: Rule
+    services:
+    - name: cms
+      port: 80
