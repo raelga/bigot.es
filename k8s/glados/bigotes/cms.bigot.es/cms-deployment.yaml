@@ -17,7 +17,7 @@ spec:
         tier: wordpress
     spec:
       containers:
-      - image: eu.gcr.io/bigotes-pro/cms.bigot.es:latest
+      - image: eu.gcr.io/bigotes-pro/cms.bigot.es:d0b7dab
         name: wordpress
         resources:
           requests:
