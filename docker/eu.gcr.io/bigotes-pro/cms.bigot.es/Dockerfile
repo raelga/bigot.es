@@ -1,42 +1,37 @@
-FROM bash:5.0 as wp-content
-
-ADD plugins.list /tmp/wp-plugins/plugins.list
-
-RUN while read plugin || [ -n "$plugin" ]; do \
-  echo echo ${plugin} | grep -q 'tar.gz' \
-  && wget -q -O - ${plugin} | tar zx -C /tmp/wp-plugins \
-  ||  { \
-  apk add unzip; \
-  wget -q -O - ${plugin} | busybox unzip -q -d /tmp/wp-plugins -; \
-  } \
-  && echo "Plugin ${plugin} downloaded."; \
-  done < /tmp/wp-plugins/plugins.list
-
-ADD themes.list /tmp/wp-themes/themes.list
-
-RUN while read theme || [ -n "$theme" ]; do \
-  echo echo ${theme} | grep -q 'tar.gz' \
-  && wget -q -O - ${theme} | tar zx -C /tmp/wp-themes \
-  ||  { \
-  apk add unzip; \
-  wget -q -O - ${theme} | busybox unzip -q -d /tmp/wp-themes -; \
-  } \
-  && echo "Theme ${theme} downloaded."; \
-  done < /tmp/wp-themes/themes.list
-
-RUN mkdir -p /tmp/wp-languages \
-  && wget -q 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=po' -O /tmp/wp-languages/es_ES.po \
-  && wget -q 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=mo' -O /tmp/wp-languages/es_ES.mo
-
 FROM wordpress:5.3 as wp
 
-COPY --chown=www-data wp-content /var/www/html/wp-content
-COPY --from=wp-content --chown=www-data /tmp/wp-plugins /var/www/html/wp-content/plugins/
-COPY --from=wp-content --chown=www-data /tmp/wp-themes /var/www/html/wp-content/themes/
-COPY --from=wp-content --chown=www-data /tmp/wp-languages /var/www/html/wp-content/languages/
+RUN set -eux; \
+  apt-get update; \
+  apt-get install -y --no-install-recommends busybox unzip; \
+  rm -rf /var/lib/apt/lists/*
 
-RUN { mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini; \
-  echo 'opcache.memory_consumption=64'; \
-  echo 'opcache.max_accelerated_files=4000'; \
-  echo 'opcache.revalidate_freq=10'; \
-  } > /usr/local/etc/php/conf.d/opcache-recommended.ini
+WORKDIR /usr/src/wordpress/wp-content
+
+# Clean up unused plugins and themes
+RUN rm -R plugins/akismet themes/twenty*
+
+# Copy custom wp-content
+COPY --chown=www-data wp-content/ .
+
+# Copy plugin list
+ADD plugins.list /tmp/plugins.list
+
+RUN while read plugin || [ -n "$plugin" ]; do \
+  echo ${plugin} | grep -q 'tar.gz' \
+  && { curl -sqL ${plugin} | tar zx -C plugins/; } \
+  || { curl -sqL ${plugin} | busybox unzip -q -d plugins/ -; } \
+  && { echo "Plugin ${plugin} downloaded."; } \
+  done < /tmp/plugins.list
+
+ADD themes.list /tmp/themes.list
+
+RUN while read theme || [ -n "$theme" ]; do \
+  echo ${theme} | grep -q 'tar.gz' \
+  && { curl -sqL ${theme} | tar zx -C themes/; } \
+  || { curl -sqL ${theme} | busybox unzip -q -d themes/ -; } \
+  && { echo "Theme ${theme} downloaded."; } \
+  done < /tmp/themes.list
+
+RUN mkdir -p wp-languages \
+  && curl -sqL 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=po' -o wp-languages/es_ES.po \
+  && curl -sqL 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=mo' -o wp-languages/es_ES.mo
