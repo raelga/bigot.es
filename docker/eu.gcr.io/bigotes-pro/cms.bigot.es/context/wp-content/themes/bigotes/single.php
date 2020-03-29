@@ -4,8 +4,6 @@
 
 <!-- start content container -->
 <?php get_template_part( 'content', 'single' ); ?>
-<!-- start content container -->
-<?php get_template_part( 'content', 'single' ); ?>
 <div id="disqus_thread"></div>
 <script>
     var disqus_config = function () {
