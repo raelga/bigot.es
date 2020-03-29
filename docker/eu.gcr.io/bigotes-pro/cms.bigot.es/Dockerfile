@@ -32,8 +32,8 @@ RUN while read theme || [ -n "$theme" ]; do \
   && { echo "Theme ${theme} downloaded."; } \
   done < /tmp/themes.list
 
-RUN mkdir -p wp-languages \
-  && curl -sqL 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=po' -o wp-languages/es_ES.po \
-  && curl -sqL 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=mo' -o wp-languages/es_ES.mo
+RUN mkdir -p languages \
+  && curl -sqL 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=po' -o languages/es_ES.po \
+  && curl -sqL 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=mo' -o languages/es_ES.mo
 
 WORKDIR /usr/src/wordpress
