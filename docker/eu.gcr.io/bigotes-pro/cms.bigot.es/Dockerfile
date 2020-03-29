@@ -5,6 +5,7 @@ RUN set -eux; \
   apt-get install -y --no-install-recommends busybox unzip; \
   rm -rf /var/lib/apt/lists/*
 
+USER www-data
 WORKDIR /usr/src/wordpress/wp-content
 
 # Clean up unused plugins and themes
@@ -36,4 +37,5 @@ RUN mkdir -p languages \
   && curl -sqL 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=po' -o languages/es_ES.po \
   && curl -sqL 'https://translate.wordpress.org/projects/wp/dev/es/default/export-translations/?format=mo' -o languages/es_ES.mo
 
-WORKDIR /usr/src/wordpress
+USER root
+WORKDIR /var/www/html
