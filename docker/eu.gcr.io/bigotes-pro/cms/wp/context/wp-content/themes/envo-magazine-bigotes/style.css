@@ -1,0 +1,355 @@
+/*
+ Theme Name: Envo Magazine Bigotes
+ Theme URI: https://bigot.es/
+ Description: bigot.es child theme for Envo Magazine
+ Author: Rael Garcia
+ Author URI: https://rael.io/
+ Template: envo-magazine
+ Version: 1.0.0
+*/
+
+.page-title h1 {
+    font-size: 42px;
+}
+
+.widget-title h3:before {
+	background-color: #000;
+}
+
+.comments-meta:before,
+.cat-links a:before {
+    background-color: #FF8622;
+}
+
+li.home-icon.front_page_on {
+    background-color: #f2563d;
+}
+
+li.home-icon.front_page_on:before {
+    background-color: #fa932d;
+}
+
+.posted-date { 
+    margin: 20px;
+}
+
+@media (min-width: 768px) {  
+    .single-title {
+        font-size: 42px;
+    }
+    .single-content {
+        font-size: 20px;
+    }
+}
+
+a, a:active, a:hover, a:focus {
+    color: #fa932d;
+}
+
+@media (min-width: 768px) {
+    .nav > li > a:before {
+        background-color: #fa932d;
+    }
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+    background-color: #fa932d;
+}
+
+.nav > li.active > a:after, .current-page-parent:after {
+    background-color: #fa932d;
+}
+widget-title h3:before {
+    background-color: #fa932d;
+}
+nav.navigation.pagination .current:before {
+    background-color: #fa932d;
+    border: 1px solid #fa932d;
+}
+li.home-icon.front_page_on {
+    background-color: #fa932d;
+}
+li.home-icon.front_page_on:before {
+    background-color: #fa932d;
+}
+#searchsubmit {
+    background-color: #fa932d;
+}
+.comments-meta:before, 
+.cat-links a:before {
+    background-color: #fa932d;
+}
+
+.postauthor-title {
+    font-size: 18px;
+    position: relative;
+    width: 100%;
+    clear: both;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+.postauthor-title:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: #dddddd;
+    left: 10px;
+    z-index: 6;
+    -webkit-transform: skewX(-15deg);
+    -ms-transform: skewX(-15deg);
+    transform: skewX(-15deg);
+}
+.postauthor-title h3 {
+    font-size: 18px;
+    position: relative;
+    z-index: 5;
+    color: #fff;
+    float: left;
+    padding: 10px 20px;
+    margin: 0;
+    left: 5px;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    line-height: 18px;
+}
+
+.postauthor-title h3:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fa932d;
+    -webkit-transform: skewX(-15deg);
+    -ms-transform: skewX(-15deg);
+    transform: skewX(-15deg);
+    z-index: -1;
+    display: block;
+}
+
+@media (min-width: 1200px) {
+  .postauthor-avatar {
+    position: relative;
+    float: right;
+    padding-right: 10px;
+    margin-bottom: -75px;
+    top: -80px;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 1200px) {
+  .postauthor-avatar {
+    position: relative;
+    float: right;
+    padding-right: 20px;
+    z-index: 10;
+  }
+}
+
+.postauthor-avatar img {
+  border: 2px solid #777;
+  border-radius: 66px;
+  box-shadow: 0 4px 8px 0 rgba(3, 1, 1, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.postauthor-social {
+  overflow: auto;
+  margin-top: 20px;
+}
+
+.postauthor-social ul {
+  list-style: none;
+  font-size: 1.25em;
+  padding-inline-start: 0px;
+}
+
+.postauthor-social ul li {
+  float: left;
+  padding-left: 15px;
+  border-bottom: none;
+}
+
+.postauthor-social a[href*="twitter.com"] {
+  color: #00aced;
+}
+
+.postauthor-container {
+  margin-bottom: 30px;
+}
+
+/* Top Social Bar */
+
+.social-nav a[href*="youtube.com"]:after {
+    content: "\f16a";
+}
+
+.social-nav a[href*="t.me"] {
+    text-indent: -9999px;
+    white-space: normal;
+}
+
+.social-nav a[href*="t.me"]:after {
+    font-family: "FontAwesome";
+    text-indent: 0;
+    display: block;
+    float: left; 
+    content: "\f2c6";
+    color: #0088CC;
+}
+
+.social-nav > li {
+    float: left;
+    display: block;
+    position: relative;
+}
+
+.social-nav > li > a {
+    border-bottom: 0;
+    text-transform: uppercase;
+    vertical-align: middle;
+    display: inline-block;
+    max-height: 60px;
+}
+
+@media (max-width: 768px) {
+    .social-nav a {
+        min-width: 25px !important;
+        font-size: 1.5em !important;
+    }
+    .social-nav > li > a {
+        padding: 10px 15px !important;
+    }
+    .shrink .social-nav > li > a {
+        min-width: 25px !important;
+        font-size: 1.5em !important;
+        padding: 0px 15px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .social-nav a {
+        font-size: 1.5em;
+        min-width: 25px !important;
+        padding-left: 12.5px !important;
+        padding-right: 12.5px !important;
+    }
+    .social-nav > li > a {
+        padding-bottom: 20px;
+        transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+    }
+    .shrink .social-nav > li > a {
+        padding-bottom: 15px;
+        font-size: 1.25em;;
+        max-height: 50px;
+    }
+    .social-nav li:hover .dropdown-menu{
+        visibility:visible;
+        border-top: 4px solid #ccc;
+        border-radius: 0;
+        transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+    }
+
+    .navbar a[href*="youtube.com"]:hover {
+      color: #fff;
+      background-color: #bb0000;
+    }
+    .navbar a[href*="facebook.com"]:hover {
+      color: #fff;
+      background-color: #3b5998;
+    }
+    .navbar a[href*="instagram.com"]:hover {
+      color: #fff;
+      background-color: #517fa4; 
+    }
+    .navbar a[href*="twitter.com"]:hover {
+      color: #fff;
+      background-color: #00aced;
+    }
+    .navbar a[href*="t.me"]:hover {
+      color: #fff;
+      background-color: #0088CC;
+    }
+
+    .navbar a[href*="youtube.com"]:hover:after {
+      color: #fff;
+    }
+    .navbar a[href*="facebook.com"]:hover:after {
+      color: #fff;
+    }
+    .navbar a[href*="instagram.com"]:hover:after {
+      color: #fff;
+    }
+    .navbar a[href*="twitter.com"]:hover:after {
+      color: #fff;
+    }
+    .navbar a[href*="t.me"]:hover:after {
+      color: #fff;
+    }
+
+    .navbar a[href*="youtube.com"]:after {
+      color: #777;
+    }
+    .navbar a[href*="facebook.com"]:after {
+      color: #777;
+    }
+    .navbar a[href*="instagram.com"]:after {
+      color: #777;
+    }
+    .navbar a[href*="twitter.com"]:after {
+      color: #777;
+    }
+    .navbar a[href*="t.me"]:after {
+      color: #777;
+    }
+
+}
+
+.footer-legal-note a {
+  padding: 25px;
+}
+
+.footer-social-icons {
+    padding: 25px;
+    padding-inline-start: 0px;
+}
+
+.footer-social-bar > li {
+    display: inline;
+    list-style-type: none;
+}
+
+@media (min-width: 768px) {
+  .footer-social-bar a {
+      padding: 20px;
+      font-size: 3em;
+  }
+}
+
+@media (max-width: 768px) {
+
+    .footer-social-bar > li {
+        min-width: 50px;
+        line-height: 75px;
+        padding: 0px;
+    }
+    .footer-social-bar a {
+      padding: 2vw;
+      font-size: 8vw;
+    }
+}
+
+.footer-legal-note {
+    padding: 20px 30px;
+    color: #fff;
+}
