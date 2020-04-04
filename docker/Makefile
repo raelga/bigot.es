@@ -19,7 +19,7 @@ $(addprefix .docker-set-,$(IMAGES)): .docker-set-%:
 	$(eval image		:= $(lastword $(subst /, ,$*)))
 
 $(addprefix build-,$(IMAGES)): build-%:
-	docker build -t $*:$(TAG) -f $*/Dockerfile $*/context
+	docker build -t $*:$(TAG) -t $*:latest -f $*/Dockerfile $*/context
 
 $(addprefix push-,$(IMAGES)): push-%:
 	docker push $*:$(TAG)
