@@ -4,9 +4,8 @@ commonLabels:
   app: cms
 
 resources:
-- cms-deployment.yaml
-- cms-service.yaml
-- cms-ingress.yaml
+- cms-alpine-deployment.yaml
+- cms-alpine-service.yaml
 - cms-ingressRoute.yaml
 - sensible/cms-db-credentials.yaml
 - sensible/cms-http-auth.yaml

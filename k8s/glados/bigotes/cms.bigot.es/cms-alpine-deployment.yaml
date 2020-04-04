@@ -2,23 +2,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cms
+  name: cms-alpine
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cms
+      app: cms-alpine
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: cms
+        app: cms-alpine
         tier: wordpress
     spec:
+      hostAliases:
+        - ip: "127.0.0.1"
+          hostnames:
+            - wordpress
+      volumes:
+      - name: html
+        emptyDir: {}
       containers:
-      - image: eu.gcr.io/bigotes-pro/cms.bigot.es:4ca38be
-        name: wordpress
+      - image: eu.gcr.io/bigotes-pro/cms/nginx:7081818
+        name: nginx
         imagePullPolicy: Always
         resources:
           requests:
@@ -30,6 +37,22 @@ spec:
         ports:
         - containerPort: 80
           name: wordpress
+        volumeMounts:
+          - name: html
+            mountPath: /var/www/html
+      - image: eu.gcr.io/bigotes-pro/cms/wp:7081818
+        name: wordpress
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 200m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 256Mi
+        volumeMounts:
+          - name: html
+            mountPath: /var/www/html
         env:
         - name: WORDPRESS_DB_HOST
           valueFrom:

@@ -4,11 +4,12 @@ metadata:
   name: cms
 spec:
   entrypoints:
+    - http
     - https
   tls: {}
   routes:
   - match: Host(`cms.bigot.es`)
     kind: Rule
     services:
-    - name: cms
+    - name: cms-alpine
       port: 80

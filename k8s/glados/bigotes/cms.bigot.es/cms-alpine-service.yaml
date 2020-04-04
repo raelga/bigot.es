@@ -1,13 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: cms
+  name: cms-alpine
   annotations:
     traefik.ingress.kubernetes.io/affinity: "true"
 spec:
   type: ClusterIP
   selector:
-    app: cms
+    app: cms-alpine
   ports:
   - name: http
     port: 80
