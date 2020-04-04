@@ -40,7 +40,7 @@ spec:
         volumeMounts:
           - name: html
             mountPath: /var/www/html
-      - image: eu.gcr.io/bigotes-pro/cms/wp:7081818
+      - image: eu.gcr.io/bigotes-pro/cms/wp:4f10c1a
         name: wordpress
         imagePullPolicy: Always
         resources:
