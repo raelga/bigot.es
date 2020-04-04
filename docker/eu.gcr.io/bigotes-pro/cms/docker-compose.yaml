@@ -1,0 +1,56 @@
+version: '3.3'
+
+services:
+
+  nginx:
+    #image: litespeedtech/openlitespeed:1.6.9-lsphp74
+    build:
+      context: ./nginx/context
+      dockerfile: ../Dockerfile
+      args:
+        buildno: 1
+    image: eu.gcr.io/bigotes-pro/cms/nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - wordpress:/var/www/html
+    depends_on:
+      - wordpress
+
+  wordpress:
+    build:
+      context: ./wp/context
+      dockerfile: ../Dockerfile
+      args:
+        buildno: 1
+    image: eu.gcr.io/bigotes-pro/cms/wp:latest
+    volumes:
+      - wordpress:/var/www/html
+    ports:
+      - "9000:9000"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - db
+
+  # Dummy database for testings
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+        - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+volumes:
+    db_data: {}
+    wordpress: {}
