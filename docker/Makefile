@@ -23,6 +23,3 @@ $(addprefix build-,$(IMAGES)): build-%:
 
 $(addprefix push-,$(IMAGES)): push-%:
 	docker push $*:$(TAG)
-
-$(addprefix build-dev-,$(IMAGES)): build-dev-%: build-%
-	docker tag $*:$(TAG) $*:dev
