@@ -1900,6 +1900,53 @@ li.home-icon.front_page_on:before {
   margin-bottom: 30px;
 }
 
+/* Author Page */
+
+.author-container {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.about-title h3 {
+  font-size: 2em;
+}
+
+@media (min-width: 950px) {
+  .author-avatar {
+    position: relative;
+    float: right;
+    top: -100px;
+    margin: auto auto -100px 50px;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 950px) {
+  .author-avatar {
+    position: relative;
+    float: right;
+    padding-right: 20px;
+    z-index: 10;
+  }
+}
+
+.author-avatar img {
+  border: 2px solid #777;
+  border-radius: 100%;
+  box-shadow: 0 4px 8px 0 rgba(3, 1, 1, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.author-social ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.author-social ul li {
+  padding-left: 45px;
+  font-size: 1.25em;
+}
+
 /* Top Social Bar */
 
 .social-nav a[href*="youtube.com"]:after {
