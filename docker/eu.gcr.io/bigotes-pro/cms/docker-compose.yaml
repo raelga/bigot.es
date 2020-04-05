@@ -9,7 +9,7 @@ services:
       dockerfile: ../Dockerfile
       args:
         buildno: 1
-    image: eu.gcr.io/bigotes-pro/cms/nginx:latest
+    #image: eu.gcr.io/bigotes-pro/cms/nginx:latest
     ports:
       - 80:80
     volumes:
@@ -23,7 +23,7 @@ services:
       dockerfile: ../Dockerfile
       args:
         buildno: 1
-    image: eu.gcr.io/bigotes-pro/cms/wp:latest
+    #image: eu.gcr.io/bigotes-pro/cms/wp:latest
     volumes:
       - wordpress:/var/www/html
     ports:
