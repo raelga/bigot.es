@@ -1,7 +1,7 @@
 <?php
 /**
  * Function describe for Bigotes template
- * 
+ *
  * @package bigotes
  */
 

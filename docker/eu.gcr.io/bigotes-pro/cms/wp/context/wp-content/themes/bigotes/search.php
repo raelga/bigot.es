@@ -11,7 +11,7 @@
 		if ( is_search() ) :
 			/* translators: %s: search result string */
 			echo "<h1 class='search-head text-center'>" . sprintf( esc_html__( 'Search Results for: %s', 'envo-magazine' ), get_search_query() ) . "</h1>";
-			
+
 		endif;
 
 		if ( have_posts() ) :

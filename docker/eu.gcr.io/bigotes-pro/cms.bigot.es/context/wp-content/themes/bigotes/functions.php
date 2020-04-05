@@ -46,10 +46,10 @@ if ( !function_exists( 'envo_magazine_setup' ) ) :
 
 		// Adds RSS feed links to for posts and comments.
 		add_theme_support( 'automatic-feed-links' );
-		
+
 		// Set the default content width.
 		$GLOBALS['content_width'] = 1140;
-		
+
 		add_theme_support( 'custom-header', apply_filters( 'envo_magazine_custom_header_args', array(
 			'width'                  => 2000,
 			'height'                 => 200,
@@ -109,7 +109,7 @@ function envo_magazine_header_style() {
 		}
 	<?php
 		endif;
-	?>	
+	?>
 	</style>
 	<?php
 }
@@ -119,12 +119,12 @@ endif; // envo_magazine_header_style
  * Set Content Width
  */
 function envo_magazine_content_width() {
-	
+
 	$content_width = $GLOBALS['content_width'];
 
 	// Get layout.
 	$page_layout = get_theme_mod( 'content-width', '1170' );
-	
+
 	if ( is_active_sidebar( 'envo-magazine-right-sidebar' ) ) {
 		if ( '980' === $page_layout ) {
 			$content_width = 623;
@@ -173,7 +173,7 @@ function envo_magazine_theme_stylesheets() {
 	// Theme stylesheet.
 	wp_enqueue_style( 'envo-magazine-stylesheet', get_stylesheet_uri(), array('bootstrap'), '1.3.4'  );
 	// Load Font Awesome css.
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), '4.7.0' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/fa.min.css', array(), '4.7.0' );
 }
 
 add_action( 'wp_enqueue_scripts', 'envo_magazine_theme_stylesheets' );
@@ -378,16 +378,16 @@ if ( !function_exists( 'envo_magazine_generate_construct_footer' ) ) :
 	function envo_magazine_generate_construct_footer() {
 		?>
 		<div class="footer-credits-text text-center">
-			<?php 
+			<?php
 			/* translators: %s: WordPress name with wordpress.org URL */
 			printf( esc_html__( 'Proudly powered by %s', 'envo-magazine' ), '<a href="' . esc_url( __( 'https://wordpress.org/', 'envo-magazine' ) ) . '">WordPress</a>' );
 			?>
 			<span class="sep"> | </span>
-			<?php 
+			<?php
 			/* translators: %1$s: Envo Magazine name with envothemes.com URL */
 			printf( esc_html__( 'Theme: %1$s', 'envo-magazine' ), '<a href="' . esc_url( 'https://envothemes.com/' ) . '">Envo Magazine</a>' );
 			?>
-		</div> 
+		</div>
 		<?php
 	}
 
@@ -435,7 +435,7 @@ if ( ! function_exists( 'envo_magazine_widget_date_comments' ) ) :
 	</span>
 	<span class="comments-meta">
 		<?php
-			if ( !comments_open() ) 
+			if ( !comments_open() )
 				{ esc_html_e('Off','envo-magazine'); }
 			else { ?>
 				<a href="<?php the_permalink(); ?>#comments" rel="nofollow" title="<?php esc_attr_e( 'Comment on ', 'envo-magazine' ) . the_title_attribute(); ?>">
@@ -458,7 +458,7 @@ if ( ! function_exists( 'envo_magazine_excerpt_length' ) ) :
 	}
 
 	add_filter( 'excerpt_length', 'envo_magazine_excerpt_length', 999 );
-	
+
 endif;
 
 if ( ! function_exists( 'envo_magazine_excerpt_more' ) ) :
@@ -468,9 +468,9 @@ if ( ! function_exists( 'envo_magazine_excerpt_more' ) ) :
 	function envo_magazine_excerpt_more( $more ) {
 		return '&hellip;';
 	}
-	
+
 	add_filter( 'excerpt_more', 'envo_magazine_excerpt_more' );
-	
+
 endif;
 
 if ( ! function_exists( 'envo_magazine_thumb_img' ) ) :
@@ -490,7 +490,7 @@ if ( ! function_exists( 'envo_magazine_thumb_img' ) ) :
 		<?php } elseif ( has_post_thumbnail() ) { ?>
 			<div class="news-thumb <?php echo esc_attr( $col ); ?>">
 				<img src="<?php the_post_thumbnail_url( $img ); ?>" title="<?php the_title_attribute(); ?>" alt="<?php the_title_attribute(); ?>" />
-			</div><!-- .news-thumb -->	
+			</div><!-- .news-thumb -->
 		<?php
 		}
 	}
@@ -514,15 +514,15 @@ endif;
  * Single previous next links
  */
 if ( ! function_exists( 'envo_magazine_prev_next_links' ) ) :
-	
+
 	function envo_magazine_prev_next_links() {
 		$prevPost = get_previous_post();
 		$nextPost = get_next_post();
 		?>
 		<div class="prev-next-links">
-		<?php	
-		if ( !empty( $prevPost ) ) { 
-		$prevthumbnail = get_the_post_thumbnail( $prevPost->ID, 'envo-magazine-thumbnail' );	
+		<?php
+		if ( !empty( $prevPost ) ) {
+		$prevthumbnail = get_the_post_thumbnail( $prevPost->ID, 'envo-magazine-thumbnail' );
 			?>
 			<div class="arrowLeft">
 				<?php previous_post_link('%link', '<i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>'); ?>
@@ -531,12 +531,12 @@ if ( ! function_exists( 'envo_magazine_prev_next_links' ) ) :
 				</div>
 				<div class="prev-next-links-title">
 					<?php previous_post_link('%link' ); ?>
-				</div>	
+				</div>
 			</div>
-		<?php } 
-		if ( !empty( $nextPost ) ) { 
+		<?php }
+		if ( !empty( $nextPost ) ) {
 		$nextthumbnail = get_the_post_thumbnail( $nextPost->ID, 'envo-magazine-thumbnail' );
-			?>	
+			?>
 			<div class="arrowRight">
 				<?php next_post_link('%link', '<i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>'); ?>
 				<div class="prev-next-links-thumb">
@@ -544,9 +544,9 @@ if ( ! function_exists( 'envo_magazine_prev_next_links' ) ) :
 				</div>
 				<div class="prev-next-links-title">
 					<?php next_post_link('%link' ); ?>
-				</div>	
+				</div>
 			</div>
-		
+
 		<?php } ?>
 		</div>
 		<?php
@@ -578,7 +578,7 @@ if ( ! function_exists( 'envo_magazine_author_meta' ) ) :
 				<?php the_author(); ?>
 			</a>
 		</span>
-	<?php	
+	<?php
 	}
 endif;
 
@@ -593,7 +593,7 @@ function envo_magazine_home_widgets() {
 		$number	= count( $categories );
 
 	// If no categories are available or none were requested, return an empty array
-	if ( $number === 0 ) 
+	if ( $number === 0 )
 		return array();
 	shuffle( $categories );
 	foreach ( $categories as $key ) {
@@ -607,7 +607,7 @@ function envo_magazine_home_widgets() {
 	if ( (!is_active_sidebar( 'envo-magazine-homepage-area' ) && !is_active_sidebar( 'envo-magazine-homepage-area-2' ) && !is_active_sidebar( 'envo-magazine-homepage-area-2-sidebar' ) && !is_active_sidebar( 'envo-magazine-homepage-area-3' ) && !is_active_sidebar( 'envo-magazine-homepage-area-4' ) && !is_active_sidebar( 'envo-magazine-homepage-area-4-sidebar' ) && !is_active_sidebar( 'envo-magazine-homepage-area-5' ) ) || envo_magazine_is_preview() ) {
 		?>
 		<div class="homepage-main-content-page">
-			<div class="homepage-area"> 
+			<div class="homepage-area">
 				<?php
 				the_widget( 'envo_magazine_split_images_News', 'title=', 'before_title=<div class="widget-title"><h3>&after_title=</h3></div>&before_widget=<div class="widget widget_recent_entries">&after_widget=</div>' );
 				?>
@@ -617,8 +617,8 @@ function envo_magazine_home_widgets() {
 					<?php
 					the_widget( 'envo_magazine_Featured_Column_News', 'view_all_text=' . $view_all_text . '&mix_category=' . $cat[absint($random_cat1)] . '&title=' . $name[absint($random_cat1)], '&before_title=<div class="widget-title"><h3>&after_title=</h3></div>&before_widget=<div class="widget widget_recent_entries">&after_widget=</div>' );
 					?>
-				</div>	
-				<div class="homepage-area-2-sidebar col-md-4">	
+				</div>
+				<div class="homepage-area-2-sidebar col-md-4">
 					<?php
 					the_widget( 'envo_magazine_Extended_Recent_Posts', 'title=' . esc_html__( 'Recent Posts', 'envo-magazine' ), 'before_title=<div class="widget-title"><h3>&after_title=</h3></div>&before_widget=<div class="widget widget_recent_entries">&after_widget=</div>' );
 					?>
@@ -634,14 +634,14 @@ function envo_magazine_home_widgets() {
 					<?php
 					the_widget( 'envo_magazine_Mix_Column_News', 'view_all_text=' . $view_all_text . '&mix_category='.$cat[absint($random_cat3)].'&title=' . $name[absint($random_cat3)], 'before_title=<div class="widget-title"><h3>&after_title=</h3></div>&before_widget=<div class="widget widget_recent_entries">&after_widget=</div>' );
 					?>
-				</div>	
+				</div>
 				<div class="homepage-area-area-4-sidebar col-md-4">
 					<?php
 					the_widget( 'envo_magazine_Popular_Posts', 'title=' . esc_html__( 'Popular posts', 'envo-magazine' ), 'before_title=<div class="widget-title"><h3>&after_title=</h3></div>&before_widget=<div class="widget widget_recent_entries">&after_widget=</div>' );
 					?>
 				</div>
 			</div>
-		</div> 
+		</div>
 		<?php
 	} else {
 		get_template_part( 'template-parts/homepage', 'widgets' );

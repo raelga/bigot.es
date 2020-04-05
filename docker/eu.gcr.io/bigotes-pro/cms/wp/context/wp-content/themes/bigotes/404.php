@@ -12,7 +12,7 @@
 					<?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', 'envo-magazine' ); ?>
 				</p>
 				<div class="error-actions">
-					<?php get_search_form(); ?>    
+					<?php get_search_form(); ?>
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 <article>
-	<div <?php post_class(); ?>>                    
+	<div <?php post_class(); ?>>
 		<div class="news-item row">
 			<?php envo_magazine_thumb_img( 'envo-magazine-med', 'col-md-6' ); ?>
 			<div class="news-text-wrap col-md-6">
