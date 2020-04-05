@@ -171,9 +171,11 @@ function envo_magazine_theme_stylesheets() {
 /*	wp_enqueue_style( 'envo-magazine-fonts', envo_magazine_fonts_url(), array(), null ); */
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.css', array(), '3.3.7' );
 	// Theme stylesheet.
-	wp_enqueue_style( 'envo-magazine-stylesheet', get_stylesheet_uri(), array('bootstrap'), '1.3.4'  );
+	wp_enqueue_style( 'envo-magazine-stylesheet', get_stylesheet_uri(), array('bootstrap'), '1.3.5'  );
 	// Load Font Awesome css.
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/font-awesome.css', array(), '4.7.0' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/fa.css', array(), '5.13.0' );
+	// // Load Font Awesome css.
+	// wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/css/fa.local.css', array(), '5.13.0' );
 }
 
 add_action( 'wp_enqueue_scripts', 'envo_magazine_theme_stylesheets' );
