@@ -41,6 +41,26 @@
                 </a>
               </li>
             <?php } ?>
+            <?php
+            $author_psn = get_the_author_meta('psn');
+            if (!empty($author_psn)) {
+              ?>
+              <li class="postauthor-social playstation">
+                <a href="<?php echo esc_url("https://psnprofiles.com/$author_psn") ?>" target="_blank">
+                  <i class="fab fa-playstation"></i> <?php echo esc_html__("$author_psn") ?>
+                </a>
+              </li>
+            <?php } ?>
+            <?php
+            $author_xbox = get_the_author_meta('xbox');
+            if (!empty($author_xbox)) {
+              ?>
+              <li class="postauthor-social xbox">
+                <a href="<?php echo esc_url("https://trueachievements.com/gamer/$author_xbox") ?>" target="_blank">
+                  <i class="fab fa-xbox"></i> <?php echo esc_html__("$author_xbox") ?>
+                </a>
+              </li>
+            <?php } ?>
           </ul>
         </div>
       </div>

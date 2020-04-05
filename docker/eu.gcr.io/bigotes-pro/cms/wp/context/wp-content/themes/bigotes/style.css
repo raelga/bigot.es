@@ -1882,6 +1882,14 @@ li.home-icon.front_page_on:before {
     color: #00aced;
 }
 
+.postauthor-social a[href*="psnprofiles.com"] {
+  color: #006FCD;
+}
+
+.postauthor-social a[href*="trueachievements.com"] {
+  color: #0e7a0d;
+}
+
 .postauthor-container {
     margin-bottom: 30px;
 }
