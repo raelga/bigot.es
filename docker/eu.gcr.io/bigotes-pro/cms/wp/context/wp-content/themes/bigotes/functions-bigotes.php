@@ -34,7 +34,7 @@ function bigotes_author_meta()
 	?>
 	<div class="author-meta">
 		<span class="author-meta-by"><?php esc_html_e('Por', 'envo-magazine'); ?></span>
-		<a class="author-meta-name" href="<?php echo esc_url(get_author_posts_url(the_author_meta('ID'), the_author_meta('user_nicename'))); ?>">
+		<a class="author-meta-name" href="<?php echo esc_url(get_author_posts_url(get_the_author_meta('ID'), get_the_author_meta('user_nicename'))); ?>">
 			<?php the_author(); ?>
 		</a>
 		<span class="author-meta-by"><?php esc_html_e('el', 'envo-magazine'); ?></span>
