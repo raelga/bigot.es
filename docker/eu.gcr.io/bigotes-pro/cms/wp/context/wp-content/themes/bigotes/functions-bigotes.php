@@ -200,3 +200,9 @@ function bigotes_summary_card()
 	<?php } ?>
 <?php
 }
+
+add_action( 'pre_get_posts', 'author_disable_pagination' );
+function author_disable_pagination( $query )
+{
+  if (is_author()) $query->set( 'posts_per_page', '-1' );
+}
