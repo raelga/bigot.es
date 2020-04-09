@@ -1,7 +1,7 @@
 <?php if ( has_nav_menu( 'top_menu_left' ) || has_nav_menu( 'top_menu_right' ) ) : ?>
 	<div class="top-menu" >
-		<nav id="top-navigation" class="navbar navbar-inverse bg-dark">     
-			<div class="container">   
+		<nav id="top-navigation" class="navbar navbar-inverse bg-dark">
+			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-2-collapse">
 						<span class="sr-only"><?php esc_html_e( 'Toggle navigation', 'envo-magazine' ); ?></span>
@@ -29,8 +29,8 @@
 					) );
 					?>
 				</div>
-			</div>    
-		</nav> 
+			</div>
+		</nav>
 	</div>
 <?php endif; ?>
 <div class="site-header container-fluid">
@@ -40,39 +40,23 @@
 				<div class="site-branding-logo">
 					<?php the_custom_logo(); ?>
 				</div>
-				<div class="site-branding-text">
-					<?php if ( is_front_page() ) : ?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php else : ?>
-						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-					<?php endif; ?>
-
-					<?php
-					$description = get_bloginfo( 'description', 'display' );
-					if ( $description || is_customize_preview() ) :
-						?>
-						<p class="site-description">
-							<?php echo esc_html( $description ); ?>
-						</p>
-					<?php endif; ?>
-				</div><!-- .site-branding-text -->
 			</div>
 			<?php if ( is_active_sidebar( 'envo-magazine-header-area' ) ) { ?>
 				<div class="site-heading-sidebar col-md-8" >
 					<div id="content-header-section" class="text-right">
 						<?php
 							dynamic_sidebar( 'envo-magazine-header-area' );
-						?>	
+						?>
 					</div>
 				</div>
-			<?php } ?>	
+			<?php } ?>
 		</div>
 	</div>
 </div>
-<?php do_action( 'envo_magazine_before_menu' ); ?> 
+<?php do_action( 'envo_magazine_before_menu' ); ?>
 <div class="main-menu">
-	<nav id="site-navigation" class="navbar navbar-default">     
-		<div class="container">   
+	<nav id="site-navigation" class="navbar navbar-default">
+		<div class="container">
 			<div class="navbar-header">
 				<?php if ( function_exists('max_mega_menu_is_enabled') && max_mega_menu_is_enabled('main_menu') ) : ?>
 				<?php elseif ( has_nav_menu( 'main_menu' ) ) : ?>
@@ -82,7 +66,7 @@
 						<span></span>
 					</div>
 				<?php endif; ?>
-			</div> 
+			</div>
 			<?php
 			if ( is_front_page() ) {
 				$home_icon_class = 'home-icon front_page_on';
@@ -140,6 +124,6 @@
 			</ul> -->
 		</div>
 		<?php do_action( 'envo_magazine_menu' ); ?>
-	</nav> 
+	</nav>
 </div>
 <?php do_action( 'envo_magazine_after_menu' ); ?>

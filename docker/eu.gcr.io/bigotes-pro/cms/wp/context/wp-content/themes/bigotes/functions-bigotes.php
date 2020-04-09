@@ -86,6 +86,14 @@ function envo_magazine_generate_construct_footer()
 		</ul>
 	</div>
 	<div class="footer-credits-text text-center">
+    <?php
+    $description = get_bloginfo( 'description', 'display' );
+    if ( $description || is_customize_preview() ) :
+      ?>
+      <p class="site-description">
+        <?php echo esc_html( $description ); ?>
+      </p>
+    <?php endif; ?>
 		<?php
 		printf(esc_html__('%s %s %s'), 'Copyright', date("Y"), '<a href="/">bigot.es</a>');
 		?>
