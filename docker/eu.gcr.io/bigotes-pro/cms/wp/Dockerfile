@@ -1,4 +1,4 @@
-FROM wordpress:5.3.2-php7.4-fpm-alpine as wp
+FROM wordpress:5.4.1-php7.4-fpm-alpine as wp
 
 USER www-data
 WORKDIR /usr/src/wordpress/wp-content
