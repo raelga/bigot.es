@@ -14,6 +14,7 @@ services:
       - 80:80
     volumes:
       - wordpress:/var/www/html
+      - ./wp/context/wp-content/themes/bigotes:/tmp/bigotes
     depends_on:
       - wordpress
 
@@ -26,6 +27,7 @@ services:
     #image: eu.gcr.io/bigotes-pro/cms/wp:latest
     volumes:
       - wordpress:/var/www/html
+      - ./wp/context/wp-content/themes/bigotes:/tmp/bigotes
     ports:
       - "9000:9000"
     restart: always
