@@ -8,7 +8,7 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
   <!-- Google Stuff -->
-  <script data-ad-client="ca-pub-7522671868853833" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script data-ad-client="ca-pub-6758041426106533" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129735875-1"></script>
 	<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); }; gtag('js', new Date()); gtag('config', 'UA-129735875-1');</script>
 
