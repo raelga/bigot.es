@@ -1,5 +1,5 @@
 
-TAG ?= $(shell git rev-parse --verify --short HEAD)
+TAG ?= $(shell git describe --tags)
 
 DOCKERFILES = $(shell find * -type f -name Dockerfile)
 IMAGES = $(subst /Dockerfile,,$(DOCKERFILES))
