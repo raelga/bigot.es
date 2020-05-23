@@ -1,5 +1,5 @@
                                                                                                            /*User stick note*/
-h3.sticky_title {  
+h3.sticky_title {
   margin-top: 12px;
   margin-bottom: 11px;
 }
@@ -19,7 +19,7 @@ label.row-element.more-detail{
 
 .customize-text_editor{
     font-size: 16px;
-    font-weight: bold;    
+    font-weight: bold;
 }
 
 .customize-text_editor_desc a {
@@ -40,7 +40,7 @@ label.row-element.more-detail{
 .customize-text_editor_desc .download-link{
   display: block;
 }
-.customize-text_editor_desc span {  
+.customize-text_editor_desc span {
   padding: 2px;
   margin: 0;
   display: inline-block;
@@ -49,10 +49,10 @@ label.row-element.more-detail{
 .customize-text_editor_desc .upgrade-pro{
   color: #FFF !important;
   font-size: 12px;
-  line-height: 1;  
+  line-height: 1;
   text-align: center;
   width: 90%;
-  margin-top: 10px;  
+  margin-top: 10px;
 }
 
 #accordion-section-theme_info{

@@ -1,36 +1,36 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'template-parts/template-part', 'head' ); ?>
+<?php get_template_part('template-parts/template-part', 'head'); ?>
 
-<?php if ( !is_paged() && is_front_page() ) {
-	envo_magazine_home_widgets();
+<?php if (!is_paged() && is_front_page()) {
+  envo_magazine_home_widgets();
 } ?>
 <!-- start content container -->
 <div class="row">
 
-	<div class="col-md-<?php envo_magazine_main_content_width_columns(); ?>">
+  <div class="col-md-<?php envo_magazine_main_content_width_columns(); ?>">
 
-		<?php
-		if ( have_posts() ) :
+    <?php
+    if (have_posts()) :
 
-			while ( have_posts() ) : the_post();
+      while (have_posts()) : the_post();
 
-				get_template_part( 'content', get_post_format() );
+        get_template_part('content', get_post_format());
 
-			endwhile;
+      endwhile;
 
-			the_posts_pagination();
+      the_posts_pagination();
 
-		else :
+    else :
 
-			get_template_part( 'content', 'none' );
+      get_template_part('content', 'none');
 
-		endif;
-		?>
+    endif;
+    ?>
 
-	</div>
+  </div>
 
-	<?php get_sidebar( 'right' ); ?>
+  <?php get_sidebar('right'); ?>
 
 </div>
 <!-- end content container -->

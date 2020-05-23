@@ -1,40 +1,40 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'template-parts/template-part', 'head' ); ?>
+<?php get_template_part('template-parts/template-part', 'head'); ?>
 
 <!-- start content container -->
 <div class="row">
 
-    <div class="col-md-<?php envo_magazine_main_content_width_columns(); ?>">
-		<?php
-		// if this was a search we display a page header with the results count. If there were no results we display the search form.
-		if ( is_search() ) :
-			/* translators: %s: search result string */
-			echo "<h1 class='search-head text-center'>" . sprintf( esc_html__( 'Search Results for: %s', 'envo-magazine' ), get_search_query() ) . "</h1>";
+  <div class="col-md-<?php envo_magazine_main_content_width_columns(); ?>">
+    <?php
+    // if this was a search we display a page header with the results count. If there were no results we display the search form.
+    if (is_search()) :
+      /* translators: %s: search result string */
+      echo "<h1 class='search-head text-center'>" . sprintf(esc_html__('Search Results for: %s', 'envo-magazine'), get_search_query()) . "</h1>";
 
-		endif;
+    endif;
 
-		if ( have_posts() ) :
+    if (have_posts()) :
 
-			while ( have_posts() ) : the_post();
+      while (have_posts()) : the_post();
 
-				get_template_part( 'content', get_post_format() );
+        get_template_part('content', get_post_format());
 
 
-			endwhile;
+      endwhile;
 
-			the_posts_pagination();
+      the_posts_pagination();
 
-		else :
+    else :
 
-			get_template_part( 'content', 'none' );
+      get_template_part('content', 'none');
 
-		endif;
-		?>
+    endif;
+    ?>
 
-	</div>
+  </div>
 
-	<?php get_sidebar( 'right' ); ?>
+  <?php get_sidebar('right'); ?>
 
 </div>
 <!-- end content container -->

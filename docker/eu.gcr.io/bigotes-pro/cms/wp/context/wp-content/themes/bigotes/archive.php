@@ -1,40 +1,40 @@
 <?php get_header(); ?>
 
-<?php get_template_part( 'template-parts/template-part', 'head' ); ?>
+<?php get_template_part('template-parts/template-part', 'head'); ?>
 
 <!-- start content container -->
 <div class="row">
 
-	<div class="col-md-12">
-		<?php if ( have_posts() ) : ?>
-			<header class="archive-page-header text-center">
-				<?php
-				the_archive_title_name( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-		<?php endif; ?>
-		<?php
-		if ( have_posts() ) :
+  <div class="col-md-12">
+    <?php if (have_posts()) : ?>
+      <header class="archive-page-header text-center">
+        <?php
+        the_archive_title_name('<h1 class="page-title">', '</h1>');
+        the_archive_description('<div class="taxonomy-description">', '</div>');
+        ?>
+      </header><!-- .page-header -->
+    <?php endif; ?>
+    <?php
+    if (have_posts()) :
 
-			while ( have_posts() ) : the_post();
+      while (have_posts()) : the_post();
 
-				get_template_part( 'content', get_post_format() );
+        get_template_part('content', get_post_format());
 
-			endwhile;
+      endwhile;
 
-			the_posts_pagination();
+      the_posts_pagination();
 
-		else :
+    else :
 
-			get_template_part( 'content', 'none' );
+      get_template_part('content', 'none');
 
-		endif;
-		?>
+    endif;
+    ?>
 
-	</div>
-<!--
-	<?php get_sidebar( 'right' ); ?>
+  </div>
+  <!--
+	<?php get_sidebar('right'); ?>
 //-->
 </div>
 <!-- end content container -->
