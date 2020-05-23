@@ -47,45 +47,29 @@ add_action('envo_magazine_generate_footer', 'envo_magazine_generate_construct_fo
 
 function envo_magazine_generate_construct_footer()
 {
-	?>
-	<div class="footer-legal-note text-center">
-		<?php
-		printf(esc_html__('%s'), '<a href="/condiciones-generales-de-uso">Condiciones de uso</a>');
-		?>
-		<?php
-		printf(esc_html__('%s'), '<a href="/politica-de-cookies">Política de cookies</a>');
-		?>
-		<?php
-		printf(esc_html__('%s'), '<a href="/">Redacción</a>');
-		?>
-		<?php
-		printf(esc_html__('%s'), '<a href="mailto:contacto@bigot.es" target="_blank">Contacto</a>');
-		?>
-	</div>
-	<div class="footer-social-icons text-center">
-		<!-- The social media icon bar -->
-		<ul class="footer-social-bar">
-			<li class="social-footer-icon facebook">
-				<a href="https://www.facebook.com/somosbigotes"><i class="fab fa-facebook"></i></a>
-			</li>
-			<li class="social-footer-icon twitter">
-				<a href="https://twitter.com/somosbigotes"><i class="fab fa-twitter"></i></a>
-			</li>
-			<li class="social-footer-icon instagram">
-				<a href="https://www.instagram.com/bigot.es"><i class="fab fa-instagram"></i></a>
-			</li>
-			<li class="social-footer-icon telegram">
-				<a href="https://t.me/BigotesTelegram"><i class="fab fa-telegram"></i></a>
-			</li>
-			<li class="social-footer-icon youtube">
-				<a href="https://www.youtube.com/channel/UClmcYJZDVty5QWqT-zuJV6Q"><i class="fab fa-youtube"></i></a>
-			</li>
-			<li class="social-footer-icon podcast">
-				<a href="https://www.ivoox.com/escuchar-bigotes_nq_484298_1.html"><i class="fa fa-podcast"></i></a>
-			</li>
-		</ul>
-	</div>
-	<div class="footer-credits-text text-center">
+  <div class="footer-legal-note text-center">
+    <ul class="footer-page-links">
+      <li class="footer-page-links">
+        <?php
+        printf(esc_html__('%s'), '<a href="/condiciones-generales-de-uso">Condiciones de uso</a>');
+        ?>
+      </li>
+      <li class="footer-page-links">
+        <?php
+        printf(esc_html__('%s'), '<a href="/politica-de-cookies">Política de cookies</a>');
+        ?>
+      </li>
+      <li class="footer-page-links">
+        <?php
+        printf(esc_html__('%s'), '<a href="/">Redacción</a>');
+        ?>
+      </li>
+      <li class="footer-page-links">
+        <?php
+        printf(esc_html__('%s'), '<a href="mailto:contacto@bigot.es" target="_blank">Contacto</a>');
+        ?>
+      </li>
+  </div>
     <?php
     $description = get_bloginfo( 'description', 'display' );
     if ( $description || is_customize_preview() ) :

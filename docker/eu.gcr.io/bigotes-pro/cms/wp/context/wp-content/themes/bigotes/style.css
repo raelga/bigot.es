@@ -2136,3 +2136,41 @@ li.home-icon.front_page_on:before {
   padding: 20px 30px;
   color: #fff;
 }
+
+.footer-page-links {
+  font-size: 1em;
+  padding: 25px;
+  padding-inline-start: 0px;
+}
+
+.footer-page-links li {
+  display: inline;
+  list-style-type: none;
+}
+
+@media (min-width: 768px) {
+  .footer-page-links a {
+    padding: 20px;
+    font-size: 1.5em;
+  }
+
+  .footer-page-links>li {
+    display: inline;
+    ;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .footer-page-links>li {
+    display: list-item;
+    min-width: 50px;
+    line-height: 75px;
+    padding: 0px;
+  }
+
+  .footer-page-links a {
+    padding: 2vw;
+    font-size: 4vw;
+  }
+}
