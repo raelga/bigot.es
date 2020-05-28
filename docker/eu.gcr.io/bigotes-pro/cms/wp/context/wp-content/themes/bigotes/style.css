@@ -2151,7 +2151,7 @@ li.home-icon.front_page_on:before {
 @media (min-width: 768px) {
   .footer-page-links a {
     padding: 20px;
-    font-size: 1.5em;
+    font-size: 1em;
   }
 
   .footer-page-links>li {
