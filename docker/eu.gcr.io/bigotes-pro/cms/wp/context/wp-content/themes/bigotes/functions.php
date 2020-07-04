@@ -29,7 +29,8 @@ if (!function_exists('envo_magazine_setup')) :
     set_post_thumbnail_size(300, 300, true);
     add_image_size('envo-magazine-single', 1140, 641, true);
     add_image_size('envo-magazine-med', 720, 405, true);
-    add_image_size('envo-magazine-thumbnail', 160, 120, true);
+    add_image_size('envo-magazine-thumbnail', 192, 108, true);
+    //add_image_size('envo-magazine-thumbnail', 160, 120, true);
 
     // Add Custom Background Support.
     $args = array(
