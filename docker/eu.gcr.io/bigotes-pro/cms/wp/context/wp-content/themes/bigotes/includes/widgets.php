@@ -23,6 +23,9 @@ if (!function_exists('envo_magazine_load_widgets')) :
     // Mix Column news.
     register_widget('envo_magazine_Mix_Column_News');
 
+    // Image Mix Column news.
+    register_widget('envo_magazine_Image_Mix_Column_News');
+
     // Three Column news.
     register_widget('envo_magazine_Three_Column_News');
 
@@ -55,6 +58,11 @@ require get_template_directory() . '/includes/widgets/two-column-news.php';
  * Mix Column News Widget
  */
 require get_template_directory() . '/includes/widgets/mix-column-news.php';
+
+/**
+ * Image Mix Column News Widget
+ */
+require get_template_directory() . '/includes/widgets/image-mix-column-news.php';
 
 /**
  * Three Column News Widget
