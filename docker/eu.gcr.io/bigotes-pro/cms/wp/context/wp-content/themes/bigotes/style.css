@@ -92,7 +92,8 @@ a img.aligncenter {
   text-align: center;
 }
 
-.wp-block-image figcaption {
+.wp-block-image figcaption,
+.wp-block-embed-youtube figcaption {
   font-size: 0.8em;
   text-align: center;
 }
