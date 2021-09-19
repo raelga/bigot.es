@@ -8,8 +8,8 @@ spec:
     - https
   tls: {}
   routes:
-  - match: Host(`cms.bigot.es`)
-    kind: Rule
-    services:
-    - name: cms-alpine
-      port: 80
+    - match: Host(`cms.bigot.es`)
+      kind: Rule
+      services:
+        - name: cms-alpine
+          port: 80
